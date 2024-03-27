@@ -9,4 +9,4 @@ This is a little project for the course softwere development.
 - Name 5
 
 ### Declarations:
-- I, Firstname Lastname, declare that I am the sole author of the content I add to this repository.
+- I, Jesper Wentzell, declare that I am the sole author of the content I add to this repository.
