@@ -1,6 +1,9 @@
 # Dungeon Crawler
 We will make a simple dungeon crawler in C# using Unity. You will click in the environment to navigate, and click on objects to interact. While exploring the dungeon you will encounter and fight enemies. Find items to make yourself more powerful and survive as long as possible.
 
+### Kanban board:
+https://github.com/users/Kiopp/projects/2
+
 ### Created by:
 - Kiopp, Jesper Wentzell
 - Vencilo, Axel Bechtel
