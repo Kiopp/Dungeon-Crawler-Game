@@ -5,6 +5,10 @@ Language: We will write in C# using the latest long-term support version of unit
 
 Build system: ?
 
+### Compilation instructions:
+1. Open project in unity LTS version 2022.3.22f1
+2. TBD
+
 ### Kanban board:
 https://github.com/users/Kiopp/projects/2
 
