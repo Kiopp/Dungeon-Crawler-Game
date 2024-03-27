@@ -1,4 +1,4 @@
-# Softwere-Development-Course-Project
+# Project title
 This is a little project for the course softwere development.
 
 ### Created by:
