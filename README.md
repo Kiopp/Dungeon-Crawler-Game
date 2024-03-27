@@ -10,3 +10,4 @@ This is a little project for the course softwere development.
 
 ### Declarations:
 - I, Jesper Wentzell, declare that I am the sole author of the content I add to this repository.
+- I, Axel Bechtel, declare that I am the sole author of the content I add to this repository.
