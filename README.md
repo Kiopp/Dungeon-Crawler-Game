@@ -1,5 +1,5 @@
-# Project title
-This is a little project for the course software development.
+# Dungeon Crawler
+We will make a simple dungeon crawler in Unity. You will click in the environment to navigate, and click on objects to interact. While exploring the dungeon you will encounter and fight enemies. Find items to make yourself more powerful and survive as long as possible.
 
 ### Created by:
 - Kiopp, Jesper Wentzell
