@@ -6,7 +6,8 @@ The game will be a 3d game, where the player moves between fixed positions withi
 ### Language: 
 We will write in C# using the latest long-term support version of unity: 2022.3.22f1
 
-Build system: unity LTS version 2022.3.22f1
+### Build system: 
+Unity LTS version 2022.3.22f1
 
 ## Compilation instructions:
 1. Download and open project in unity LTS version 2022.3.22f1
