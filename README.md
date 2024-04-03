@@ -1,10 +1,17 @@
 # Dungeon Crawler
 ## Description 
-We will make a simple dungeon. You will click in the environment to navigate, and click on objects to interact. While exploring the dungeon you will encounter different kinds of situations such as meeting other adventurers and fighting enemies. Find and collect items to make yourself more powerful and survive for as long as possible and explore the dungeon.
-The game will be a 3d game, where the player moves between fixed positions within the dungeon in a step-wise manner. 
+We're creating a simple first-person dungeon crawler. Players will navigate a 3D environment, interact with objects, and fight enemies. During their exploration, they'll encounter various situations like meeting other adventurers and solving puzzles. Finding and collecting items will make the player more powerful, increasing their chances of survival. The game will feature 3D graphics and grid-like movement.
 
 ### Technical details:
-A GameManager class will handle the interactions between the code and the game world.
+- A GameManager class will manage interactions between the user and the code.
+- Battles will be turn-based. Where the player and the enemy take turns attacking each other.
+- A BattleManager class will manage the turn-based combat. 
+- Levels will have a grid representation in code, used to track the player's position within the level. This grid might also be used to create a visual map of the dungeon for the player.
+- If time allows, the levels will be randomly generated.
+- The player can carry a maximum of six items.
+- Items can be either a weapon (swords) or a consumable (potions). If time allows, there might be keys and other progression items.
+- The player can use either the arrow keys or WASD keys to move. Up moves the player forward, left rotates them left, and right rotates them right.
+- All relevant data and statistics should be easily visible to the player on their GUI.
 
 ### Language: 
 We will write in C# using the latest long-term support version of unity: 2022.3.22f1
