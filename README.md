@@ -1,5 +1,5 @@
 # Dungeon Crawler
-Description: We will make a simple dungeon. You will click in the environment to navigate, and click on objects to interact. While exploring the dungeon you will encounter and fight enemies. Find and collect items to make yourself more powerful and survive for as long as possible.
+Description: We will make a simple dungeon. You will click in the environment to navigate, and click on objects to interact. While exploring the dungeon you will encounter different kinds of situations such as meeting other adventurers and fighting enemies. Find and collect items to make yourself more powerful and survive for as long as possible and explore the dungeon.
 The game will be a 3d game, where the player moves between fixed positions within the dungeon in a step-wise manner. 
 
 Language: We will write in C# using the latest long-term support version of unity: 2022.3.22f1
