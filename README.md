@@ -8,8 +8,9 @@ Build system: ?
 
 ### Compilation instructions:
 1. Download and open project in unity LTS version 2022.3.22f1
-2. Click on "File", then "Build and Run"
-3. This will compile the program and run it.
+   Download unity at -> https://unity.com/releases/editor/qa/lts-releases
+3. Click on "File", then "Build and Run"
+4. This will compile the program and run it.
 
 ### Kanban board:
 https://github.com/users/Kiopp/projects/2
