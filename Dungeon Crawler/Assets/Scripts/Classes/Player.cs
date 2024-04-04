@@ -10,7 +10,11 @@ public class Player : Entity
 
     public override void TakeDamage(int Damage)
     {
-        Health -= Damage;
+        if (Random.Range(0, 5) == 0)
+        {
+            Health -= Damage;
+            Dead();
+        }
     }
 
     public override void Dead()
