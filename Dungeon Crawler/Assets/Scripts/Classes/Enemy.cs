@@ -1,15 +1,19 @@
+using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Inherits from the entity superclass
 public class Enemy : Entity
 {
+    //Creates an enemy with health and damage of choice
     public Enemy(int HP, int DMG)
     {
         Health = HP;
         Damage = DMG;
     }
 
+    //Method for the enemy to take damage
     public override void TakeDamage(int Damage)
     {
         if (Random.Range(0, 2) == 0)
@@ -18,6 +22,7 @@ public class Enemy : Entity
         }
     }
 
+    //Method to see if the enemy dies
     public override void Dead()
     {
         if (Health <= 0)
