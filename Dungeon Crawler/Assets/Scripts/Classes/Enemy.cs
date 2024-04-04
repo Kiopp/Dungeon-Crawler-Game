@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Inherits from the entitty superclass
+//Inherits from the entity superclass
 public class Enemy : Entity
 {
     //Creates an enemy with health and damage by choice
