@@ -8,7 +8,7 @@ public abstract class Entity : MonoBehaviour
     public int Health;
     public int Damage;
 
-    public abstract void TakeDamage();
+    public abstract void TakeDamage(int Damage);
 
     public abstract void Dead();
 }
