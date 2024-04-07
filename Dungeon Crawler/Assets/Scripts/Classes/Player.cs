@@ -1,13 +1,16 @@
 using UnityEngine;
 
+//Inherits from the entity superclass 
 public class Player : Entity
 {
+    //Creates a player with fixed health and damage
     public Player()
     {
         Health = 100;
         Damage = 10;
     }
 
+    //Player takes damage
     public override void TakeDamage(int Damage)
     {
         if (Random.Range(0, 5) == 0)
@@ -17,6 +20,7 @@ public class Player : Entity
         }
     }
 
+    //Checks if the player is dead
     public override void Dead()
     {
         if (Health <= 0)
