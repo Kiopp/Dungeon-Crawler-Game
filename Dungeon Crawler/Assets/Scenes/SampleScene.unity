@@ -2126,6 +2126,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421255257}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &452228319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452228321}
+  - component: {fileID: 452228320}
+  m_Layer: 0
+  m_Name: GameInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &452228320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452228319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcac93b81c126d14f9db961fedc014e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 6
+  moveDelay: 0.5
+  rotateDelay: 0.5
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!4 &452228321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452228319}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.576542, y: 20.919617, z: 53.437496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &498098881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,14 +4628,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9de2259b4d08140b5925083500e246, type: 3}
+  m_Script: {fileID: 11500000, guid: 00ecec35530ecd741816ae48988cd864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 963194225}
-  moveDistance: 6
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  gameInput: {fileID: 452228320}
 --- !u!1 &1037347608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8933,3 +8979,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1161414370}
   - {fileID: 848110411}
+  - {fileID: 452228321}
