@@ -12,6 +12,7 @@ public class Enemy : Entity
         Damage = DMG;
     }
 
+    //Attacks the player
     public void Attack(Player player)
     {
         player.TakeDamage(Damage);
