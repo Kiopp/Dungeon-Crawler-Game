@@ -9,11 +9,9 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameInput.IsMoving() && Time.time >= gameInput.GetNextMoveTime())
-            gameInput.MovePlayer();
+        gameInput.TryMovePlayer();
 
-        if (gameInput.IsRotating() && Time.time >= gameInput.GetNextRotateTime())
-            gameInput.RotatePlayer();
+        gameInput.TryRotatePlayer();
     }
 
     void Awake()

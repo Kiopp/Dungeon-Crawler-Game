@@ -18,7 +18,9 @@ public class GameInput : MonoBehaviour
     private float nextMoveTime = 0.0f;
     private float nextRotateTime = 0.0f;
     private bool isMoving = false;
+    private bool startMove = false;
     private bool isRotating = false;
+    private bool startRotate = false;
     private GameObject playerObject = null;
     public GameObject PlayerObject
     {
@@ -45,7 +47,8 @@ public class GameInput : MonoBehaviour
     public void OnMoveStart()
     {
         isMoving = true;
-        MovePlayer();
+        startMove = true;
+        TryMovePlayer();
     }
     public void OnMoveRelease()
     {
@@ -55,7 +58,8 @@ public class GameInput : MonoBehaviour
     public void OnRotateStart()
     {
         isRotating = true;
-        RotatePlayer();
+        startRotate = true;
+        TryRotatePlayer();
     }
     public void OnRotateRelease()
     {
@@ -85,61 +89,76 @@ public class GameInput : MonoBehaviour
     }
     #endregion
 
-    public void MovePlayer()
+    public void TryMovePlayer()
     {
-        // Get player movement input
-        bool moving = playerInputActions.Player.Move.IsPressed();
-
-        // Update timer
-        nextMoveTime = Time.time + moveDelay;
-
-        if (moving)
+        // Check if key is just pressed or if timer allows move
+        if (isMoving && Time.time >= nextMoveTime || startMove)
         {
-            // Get the current forward direction
-            Vector3 forwardDirection = playerObject.transform.forward.normalized;
+            // Only run once on start
+            startMove = false;
 
-            // Multiple raycasts for 3D collision detection
-            if (CanMove(forwardDirection))
+            // Get player movement input
+            bool moving = playerInputActions.Player.Move.IsPressed();
+
+            // Update timer
+            nextMoveTime = Time.time + moveDelay;
+
+            if (moving)
             {
-                //Debug.Log("Moved");
-                playerObject.transform.position += forwardDirection * moveDistance; // Move
+                // Get the current forward direction
+                Vector3 forwardDirection = playerObject.transform.forward.normalized;
+
+                // Multiple raycasts for 3D collision detection
+                if (CanMove(forwardDirection, playerObject))
+                {
+                    //Debug.Log("Moved");
+                    playerObject.transform.position += forwardDirection * moveDistance; // Move
+                }
+            }
+            else
+            {
+                //Debug.Log("Did not move");
             }
         }
-        else
+        
+    }
+
+    public void TryRotatePlayer()
+    {
+        // Check if key is just pressed or if timer allows rotation
+        if (isRotating && Time.time >= nextRotateTime || startRotate)
         {
-            //Debug.Log("Did not move");
+            // Only run once on start
+            startRotate = false;
+
+            // Get player rotation input
+            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
+
+            // Update timer
+            nextRotateTime = Time.time + rotateDelay;
+
+            if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
+            {
+                //Debug.Log("Rotated");
+                if (rotationValue > 0) // Clockwise rotation
+                {
+                    // Rotate the object 90 degrees on the Y-axis
+                    playerObject.transform.Rotate(0f, -90f, 0f);
+                }
+                else if (rotationValue < 0) // Counter clockwise rotation
+                {
+                    // Rotate the object 90 degrees on the Y-axis
+                    playerObject.transform.Rotate(0f, 90f, 0f);
+                }
+            }
+            else
+            {
+                //Debug.Log("Did not rotate");
+            }
         }
     }
 
-    public void RotatePlayer()
-    {
-        // Get player rotation input
-        float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
-
-        // Update timer
-        nextRotateTime = Time.time + rotateDelay;
-
-        if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
-        {
-            //Debug.Log("Rotated");
-            if (rotationValue > 0) // Clockwise rotation
-            {
-                // Rotate the object 90 degrees on the Y-axis
-                playerObject.transform.Rotate(0f, -90f, 0f);
-            }
-            else if (rotationValue < 0) // Counter clockwise rotation
-            {
-                // Rotate the object 90 degrees on the Y-axis
-                playerObject.transform.Rotate(0f, 90f, 0f);
-            }
-        }
-        else
-        {
-            //Debug.Log("Did not rotate");
-        }
-    }
-
-    private bool CanMove(Vector3 direction)
+    private bool CanMove(Vector3 direction, GameObject source)
     {
         // Adjust number of raycasts and offset positions
         Vector3 offset = new Vector3(0, 0.5f, 0); // Offset for slightly elevated raycasts 
@@ -150,6 +169,6 @@ public class GameInput : MonoBehaviour
          It will only detect walls.
          - Jesper
          */
-        return !Physics.Raycast(playerObject.transform.position + offset, direction, out RaycastHit hit, moveDistance, wallLayer);
+        return !Physics.Raycast(source.transform.position + offset, direction, out RaycastHit hit, moveDistance, wallLayer);
     }
 }
