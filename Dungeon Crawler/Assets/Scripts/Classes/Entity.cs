@@ -13,5 +13,5 @@ public abstract class Entity : MonoBehaviour
     public abstract void TakeDamage(int Damage);
 
     //A method to see if enteties have been defeated/killed
-    public abstract void Dead();
+    public abstract bool Dead();
 }

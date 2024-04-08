@@ -12,6 +12,11 @@ public class Enemy : Entity
         Damage = DMG;
     }
 
+    public void Attack(Player player)
+    {
+        player.TakeDamage(Damage);
+    }
+
     //Damages the enemy
     public override void TakeDamage(int Damage)
     {
@@ -22,12 +27,15 @@ public class Enemy : Entity
         }
     }
 
-    //checks if the enemy has been killed
-    public override void Dead()
+    //checks if the enemy has been killed, returns true if the enemy is dead
+    public override bool Dead()
     {
         if (Health <= 0)
         {
             Debug.Log("Enemy has been killed");
+            return true;
         }
+
+        return false;
     }
 }
