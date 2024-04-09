@@ -92,7 +92,7 @@ public class GameInput : MonoBehaviour
     public void TryMovePlayer()
     {
         // Check if key is just pressed or if timer allows move
-        if (isMoving && Time.time >= nextMoveTime || startMove)
+        if (playerObject != null && isMoving && Time.time >= nextMoveTime || startMove)
         {
             // Only run once on start
             startMove = false;
@@ -115,10 +115,6 @@ public class GameInput : MonoBehaviour
                     playerObject.transform.position += forwardDirection * moveDistance; // Move
                 }
             }
-            else
-            {
-                //Debug.Log("Did not move");
-            }
         }
         
     }
@@ -126,7 +122,7 @@ public class GameInput : MonoBehaviour
     public void TryRotatePlayer()
     {
         // Check if key is just pressed or if timer allows rotation
-        if (isRotating && Time.time >= nextRotateTime || startRotate)
+        if (playerObject != null && isRotating && Time.time >= nextRotateTime || startRotate)
         {
             // Only run once on start
             startRotate = false;
@@ -150,10 +146,6 @@ public class GameInput : MonoBehaviour
                     // Rotate the object 90 degrees on the Y-axis
                     playerObject.transform.Rotate(0f, 90f, 0f);
                 }
-            }
-            else
-            {
-                //Debug.Log("Did not rotate");
             }
         }
     }
