@@ -22,8 +22,10 @@ Unity LTS version 2022.3.22f1
 ## Compilation instructions
 1. Download and open project in unity LTS version 2022.3.22f1
    Download unity at -> https://unity.com/releases/editor/qa/lts-releases
-3. Click on "File", then "Build and Run"
-4. This will compile the program and run it.
+3. Go to File > Build Settings. In the "Platform" list, select the platform(s) you want to build your project for.
+4. Click Build.
+5. Choose a destination folder where you want to save the compiled project files.
+6. After the build completes, the compiled project will be in your selected destination folder.
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
