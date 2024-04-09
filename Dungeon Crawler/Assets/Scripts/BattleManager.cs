@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     private bool battleOver = false;
 
     private PlayerInputActions inputActions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +66,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Enemy attacks");
         enemy.Attack(player);
-        if (enemy.Dead == true)
+        if (enemy.Dead() == true)
         {
             battleOver = true;
         }
