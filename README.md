@@ -14,15 +14,15 @@ We're creating a simple first-person dungeon crawler. Players will navigate a 3D
 - All relevant data and statistics should be easily visible to the player on their GUI.
 
 ### Language: 
-We will write in C# using the latest long-term support version of unity: 2022.3.22f1
+We will write in C# using a long-term support version of unity: 2022.3.22f1
 
 ### Build system: 
 Unity LTS version 2022.3.22f1
 
 ## Compilation instructions
 1. Download and open project in unity LTS version 2022.3.22f1
-   Download unity at -> https://unity.com/releases/editor/qa/lts-releases
-3. Go to File > Build Settings. In the "Platform" list, select the platform(s) you want to build your project for.
+   Download unity here: https://unity.com/releases/editor/qa/lts-releases
+3. Go to File > Build Settings. In the "Platform" list, select the platform(s) you want to build the project for.
 4. Click Build.
 5. Choose a destination folder where you want to save the compiled project files.
 6. After the build completes, the compiled project will be in your selected destination folder.
