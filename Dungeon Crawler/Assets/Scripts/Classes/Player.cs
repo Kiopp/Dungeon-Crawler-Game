@@ -1,41 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-//Inherits from the entity superclass 
+ 
+//Represents the player entity
 public class Player : Entity
 {
-    //Creates a player with fixed health and damage
-    public Player()
+    //Creates a player with specified health and damage
+    public Player(int health, int damage)
     {
-        Health = 100;
-        Damage = 10;
+        Health = health; //Sets player health
+        Damage = damage; //Sets player damage
     }
 
-    //Deals damage to enemies
-    public void Attack(Enemy enemy)
+    //Attacks an enemy
+    public override void Attack(IBattleEntity enemy)
     {
-        enemy.TakeDamage(Damage);
+        enemy.TakeDamage(Damage); //Inflicts the player damage to an enemy
     }
 
-    //Player takes damage
+    //Inflicts damage to the player
     public override void TakeDamage(int Damage)
     {
-        if (Random.Range(0, 5) == 0)
+        if (Random.Range(0, 10) != 0) //Has a chance to randomly dodge an attack
         {
-            Health -= Damage;
-            Dead();
+            Health -= Damage; //Reduces the player health by the damage dealt
         }
     }
 
-    //Checks if the player is dead, returns true if the player is dead
+    //Checks if the player is dead
     public override bool Dead()
     {
-        if (Health <= 0)
-        {
-            Debug.Log("Player is Dead");
-            return true;
-        }
-
-        return false;
+        return Health <= 0; //Returns true if the player is dead
     }
 
 }

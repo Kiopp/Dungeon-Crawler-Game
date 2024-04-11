@@ -2,41 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Inherits from the entity superclass
+//Represents the enemy entity
 public class Enemy : Entity
 {
-    //Creates an enemy with health and damage by choice
-    public Enemy(int HP, int DMG)
+    //Creates an enemy with specified health and damage
+    public Enemy(int health, int damage)
     {
-        Health = HP;
-        Damage = DMG;
+        Health = health; //Sets enemy health
+        Damage = damage; //Sets enemy damage
     }
 
     //Attacks the player
-    public void Attack(Player player)
+    public override void Attack(IBattleEntity player)
     {
-        player.TakeDamage(Damage);
+        player.TakeDamage(Damage); //Inflicts the enemy damage to the player
     }
 
-    //Damages the enemy
+    //Inflicts damage to the enemy
     public override void TakeDamage(int Damage)
     {
-        if (Random.Range(0, 2) == 0)
+        if (Random.Range(0, 15) != 0) //Has a chance to randomly dodge an attack
         {
-            Health -= Damage;
-            Dead();
+            Health -= Damage; //Reduces the enemy health by the damage dealt
         }
     }
 
-    //checks if the enemy has been killed, returns true if the enemy is dead
+    //checks if the enemy has been killed
     public override bool Dead()
     {
-        if (Health <= 0)
-        {
-            Debug.Log("Enemy has been killed");
-            return true;
-        }
-
-        return false;
+        return Health <= 0; //Returns true if the enemy is dead
     }
 }

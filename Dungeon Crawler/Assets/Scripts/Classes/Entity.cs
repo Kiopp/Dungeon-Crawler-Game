@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+//Represents an entity (player, enemy)
+public abstract class Entity : MonoBehaviour, IBattleEntity
 {
-    //Attributes for the enteties
-    public int Health;
-    public int Damage;
+    public int Health { get; protected set; } //Current health of the entity
+    public int Damage { get; protected set; } //The amount of damage an entity can deal
 
-    //A method for different entities to take damage
+    //Attacks another entity
+    public abstract void Attack(IBattleEntity opponent);
+
+    //Inflicts damage to the entity
     public abstract void TakeDamage(int Damage);
 
-    //A method to see if enteties have been defeated/killed
+    //Checks if the entity is dead
     public abstract bool Dead();
 }
