@@ -5,11 +5,16 @@ using UnityEngine;
 //Represents the enemy entity
 public class Enemy : Entity
 {
-    //Creates an enemy with specified health and damage
-    public Enemy(int health, int damage)
+    [SerializeField] private int startHealth; //Enemy starting health (Visisble and editable in unity inspector)
+    [SerializeField] private int attackDamage; //Enemy damage (Visisble and editable in unity inspector)
+    [SerializeField] private float dodgeProbability; //Enemy dodge probability (Visisble and editable in unity inspector)
+
+    //Overrides the start method to initialize the enemy health and damage
+    protected override void Start()
     {
-        Health = health; //Sets enemy health
-        Damage = damage; //Sets enemy damage
+        base.Start(); //Calls the base class start to initialize the currenthealth
+        Health = startHealth; //Sets the enemy starting health
+        Damage = attackDamage; //Sets the enemy damage
     }
 
     //Attacks the player
@@ -21,7 +26,7 @@ public class Enemy : Entity
     //Inflicts damage to the enemy
     public override void TakeDamage(int Damage)
     {
-        if (Random.Range(0, 15) != 0) //Has a chance to randomly dodge an attack
+        if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
         {
             Health -= Damage; //Reduces the enemy health by the damage dealt
         }
