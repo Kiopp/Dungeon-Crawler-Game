@@ -3,76 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
 {
-    public Player player;
-    public Enemy enemy;
+    private IBattleEntity Player; //The player entity in the battle
+    private IBattleEntity Enemy; //The enemy entity in the battle
 
-    private bool playerTurn = true;
-    private bool battleOver = false;
+    private PlayerInputActions playerInputActions; //Handles the players input
 
-    private PlayerInputActions inputActions;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartBattle();
-        inputActions = new PlayerInputActions();
-        inputActions.Player.Attack.performed += _ => OnAttack();
-    }
-
+    //Enables the player input when the script is enabled
     private void OnEnable()
     {
-        inputActions.Enable();
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Enable(); //Enables player inputs
     }
 
+    //Disables the player input when the script is disabled
     private void OnDisable()
     {
-        inputActions.Disable();
+        playerInputActions.Disable(); //Disables player inputs
     }
 
-    private void StartBattle()
+    //Starts the battle between a player and an enemy
+    public void StartBattle(IBattleEntity player, IBattleEntity enemy)
     {
-        Debug.Log("Battle has started");
+        Player = player;
+        Enemy = enemy;
+
+        Debug.Log("The battle has begun");
+        StartCoroutine(BattleLoop()); //Starts the battle loop coroutine
     }
 
-    // Update is called once per frame
-    void Update()
+    //Turned based battle loop
+    private IEnumerator BattleLoop()
     {
-        if (!battleOver && !playerTurn)
+        while (!Player.Dead() && !Enemy.Dead()) //Continues the battle as long as both the player and the enemy is alive
         {
-            EnemyTurn();
-        }
-    }
-
-    public void OnAttack()
-    {
-        if (!battleOver && playerTurn)
-        {
-            Debug.Log("Player attacks");
-            player.Attack(enemy);
-            if (player.Dead() == true)
+            //Player turn
+            Debug.Log("Player turn");
+            if (playerInputActions.Player.Attack.triggered) //Checks if the attack input is triggered
             {
-                battleOver = true;
+                Player.Attack(Enemy); //The player attacks the enemy
             }
-            else
-            {
-                playerTurn = false;
-            }
-        }
-    }
 
-    public void EnemyTurn()
-    {
-        Debug.Log("Enemy attacks");
-        enemy.Attack(player);
-        if (enemy.Dead() == true)
-        {
-            battleOver = true;
-        }
-        else
-        {
-            playerTurn = true;
+            //Checks if the enemy is dead after the player turn
+            if (Enemy.Dead())
+            {
+                Debug.Log("Enemy is dead, Player wins!");
+                break;
+            }
+
+            //Enemy turn
+            Debug.Log("Enemy turn");
+            Enemy.Attack(Player); //Enemy attacks player
+
+            //Checks if the player is dead after the enemy turn
+            if (Player.Dead())
+            {
+                Debug.Log("Player is dead, Enemy wins!");
+                break;
+            }
+
+            yield return null; //Yield control back to unityuntil next frame
         }
     }
 }
