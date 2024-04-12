@@ -16,15 +16,14 @@ public class GameInput : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     private PlayerInputActions playerInputActions;
 
-    // Movement/rotation
+    // Movement/rotation variables
     private float nextMoveTime = 0.0f;
     private float nextRotateTime = 0.0f;
     private bool isMoving = false;
     private bool keepMoving = false;
-    private bool startMove = false;
     private bool isRotating = false;
     private bool keepRotating = false;
-    private bool startRotate = false;
+    private bool movementEnabled = false;
     private GameObject playerObject = null;
     public GameObject PlayerObject
     {
@@ -47,67 +46,87 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Rotate.canceled += ctx => OnRotateRelease();
     }
 
-    #region EventMethods
+    private void Update()
+    {
+        // Check valid playerObject, enabled movement and player movement not already in progress
+        if (playerObject != null && movementEnabled && !isMoving && !isRotating)
+        {
+            // Prioritize movement over rotation, can't do both at once
+            if (keepMoving)
+            {
+                TryMovePlayer();
+            }
+            else if (keepRotating) 
+            {
+                TryRotatePlayer();
+            }
+        }
+    }
+
+    #region Event Methods
+    /// <summary>
+    /// subscribed to .started event for "Move" action
+    /// </summary>
     public void OnMoveStart()
     {
         keepMoving = true;
-        startMove = true;
-        TryMovePlayer();
     }
+
+    /// <summary>
+    /// subscribed to .canceled event for "Move" action
+    /// </summary>
     public void OnMoveRelease()
     {
         keepMoving = false;
     }
 
+    /// <summary>
+    /// subscribed to .started event for "Rotate"
+    /// </summary>
     public void OnRotateStart()
     {
         keepRotating = true;
-        startRotate = true;
-        TryRotatePlayer();
     }
+
+    /// <summary>
+    /// subscribed to .canceled event for "Rotate" action
+    /// </summary>
     public void OnRotateRelease()
     {
         keepRotating = false;
     }
     #endregion
 
-    #region PublicGetMethods
-    public float GetNextMoveTime()
+    #region Public Methods
+    /// <summary>
+    /// Disables player movement
+    /// </summary>
+    public void DisableMovement()
     {
-        return nextMoveTime;
+        movementEnabled = false;
     }
 
-    public float GetNextRotateTime()
+    /// <summary>
+    /// Enables player movement
+    /// </summary>
+    public void EnableMovement()
     {
-        return nextRotateTime;
-    }
-
-    public bool IsMoving()
-    {
-        return isMoving;
-    }
-
-    public bool IsRotating()
-    {
-        return isRotating;
+        movementEnabled = true;
     }
     #endregion
 
-    public void TryMovePlayer()
+    private void TryMovePlayer()
     {
-        // Check if key is just pressed or if timer allows move
-        if (playerObject != null && keepMoving && Time.time >= nextMoveTime || startMove)
+        // Check if timer allows rotation
+        if (Time.time >= nextMoveTime)
         {
-            // Only run once on start
-            startMove = false;
-
             // Get player movement input
             bool moving = playerInputActions.Player.Move.IsPressed();
 
             // Update timer
             nextMoveTime = Time.time + moveDelay + 0.1f; // Extra .1 second delay for coroutine to finish
 
-            if (moving && !isRotating)
+            if (moving)
             {
                 // Get the current forward direction
                 Vector3 forwardDirection = playerObject.transform.forward.normalized;
@@ -115,16 +134,37 @@ public class GameInput : MonoBehaviour
                 // Multiple raycasts for 3D collision detection
                 if (CanMove(forwardDirection, playerObject))
                 {
-                    Debug.Log("Movement start");
-                    //playerObject.transform.position += forwardDirection * moveDistance; // LEGACY CODE PLEASE REMOVE
-
-                    // Lock rotations
+                    // Begin movement
                     isMoving = true;
 
+                    // Start movement coroutine
                     StartCoroutine(SmoothMove(forwardDirection * moveDistance));
-                    
-                    
                 }
+            }
+        }
+    }
+
+    private void TryRotatePlayer()
+    {
+        // Check if timer allows rotation
+        if (Time.time >= nextRotateTime)
+        {
+            // Get player rotation input
+            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
+
+            // Update timer
+            nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
+
+            if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
+            {
+                //Debug.Log("Rotated");
+                float rotationAmount = rotationValue > 0 ? -90f : 90f;
+
+                // Begin rotation
+                isRotating = true;
+
+                // Start rotation coroutine
+                StartCoroutine(SmoothRotate(rotationAmount));
             }
         }
     }
@@ -144,39 +184,11 @@ public class GameInput : MonoBehaviour
             yield return null;
         }
 
-        // Unlock rotations
-        isMoving = false;
-
         // Ensure the object ends exactly at the final position
         playerObject.transform.position = targetPosition;
-        
-    }
 
-    public void TryRotatePlayer()
-    {
-        // Check if key is just pressed or if timer allows rotation
-        if (playerObject != null && keepRotating && Time.time >= nextRotateTime || startRotate)
-        {
-            // Only run once on start
-            startRotate = false;
-
-            // Get player rotation input
-            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
-
-            // Update timer
-            nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
-
-            if (Mathf.Abs(rotationValue) > 0f && !isMoving) // Check for any rotation value
-            {
-                //Debug.Log("Rotated");
-                float rotationAmount = rotationValue > 0 ? -90f : 90f;
-
-                // Lock movement
-                isRotating = true;
-
-                StartCoroutine(SmoothRotate(rotationAmount));
-            }
-        }
+        // Alert movement stop
+        isMoving = false;
     }
 
     // Coroutine for smooth rotations
@@ -193,11 +205,11 @@ public class GameInput : MonoBehaviour
             yield return null;
         }
 
-        // Unlock movement
-        isRotating = false;
-
         // Ensure the object ends exactly at the final rotation
         playerObject.transform.rotation = targetRotation;
+
+        // Alert rotation stop
+        isRotating = false;
     }
 
     private bool CanMove(Vector3 direction, GameObject source)
@@ -207,7 +219,7 @@ public class GameInput : MonoBehaviour
 
         /*
          Raycasting is a lot like sending out a laser and checking if it hits something within a certain range, in this case moveDistance. 
-         The offset helps with consistency and allows for player to have a box collider.
+         The offset helps with consistency, but basically just moves the source of the laser up a bit.
          It will only detect walls.
          - Jesper
          */

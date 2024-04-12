@@ -9,13 +9,14 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameInput.TryMovePlayer();
 
-        gameInput.TryRotatePlayer();
     }
 
     void Awake()
     {
+        gameInput.EnableMovement();
         gameInput.PlayerObject = this.gameObject; // Set camera reference inside input class
     }
+
+
 }
