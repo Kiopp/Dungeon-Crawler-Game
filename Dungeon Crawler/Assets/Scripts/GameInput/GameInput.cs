@@ -16,7 +16,7 @@ public class GameInput : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     private PlayerInputActions playerInputActions;
 
-    // Movement/rotation
+    // Movement/rotation variables
     private float nextMoveTime = 0.0f;
     private float nextRotateTime = 0.0f;
     private bool isMoving = false;
@@ -51,11 +51,12 @@ public class GameInput : MonoBehaviour
         // Check valid playerObject, enabled movement and player movement not already in progress
         if (playerObject != null && movementEnabled && !isMoving && !isRotating)
         {
+            // Prioritize movement over rotation, can't do both at once
             if (keepMoving)
             {
                 TryMovePlayer();
             }
-            else if (keepRotating) // Prioritize movement over rotation, can't do both at once
+            else if (keepRotating) 
             {
                 TryRotatePlayer();
             }
@@ -63,19 +64,33 @@ public class GameInput : MonoBehaviour
     }
 
     #region Event Methods
+    /// <summary>
+    /// subscribed to .started event for "Move" action
+    /// </summary>
     public void OnMoveStart()
     {
         keepMoving = true;
     }
+
+    /// <summary>
+    /// subscribed to .canceled event for "Move" action
+    /// </summary>
     public void OnMoveRelease()
     {
         keepMoving = false;
     }
 
+    /// <summary>
+    /// subscribed to .started event for "Rotate"
+    /// </summary>
     public void OnRotateStart()
     {
         keepRotating = true;
     }
+
+    /// <summary>
+    /// subscribed to .canceled event for "Rotate" action
+    /// </summary>
     public void OnRotateRelease()
     {
         keepRotating = false;
@@ -100,7 +115,7 @@ public class GameInput : MonoBehaviour
     }
     #endregion
 
-    public void TryMovePlayer()
+    private void TryMovePlayer()
     {
         // Check if timer allows rotation
         if (Time.time >= nextMoveTime)
@@ -111,7 +126,7 @@ public class GameInput : MonoBehaviour
             // Update timer
             nextMoveTime = Time.time + moveDelay + 0.1f; // Extra .1 second delay for coroutine to finish
 
-            if (moving && !isRotating)
+            if (moving)
             {
                 // Get the current forward direction
                 Vector3 forwardDirection = playerObject.transform.forward.normalized;
@@ -119,16 +134,17 @@ public class GameInput : MonoBehaviour
                 // Multiple raycasts for 3D collision detection
                 if (CanMove(forwardDirection, playerObject))
                 {
-                    // Lock rotations
+                    // Begin movement
                     isMoving = true;
 
+                    // Start movement coroutine
                     StartCoroutine(SmoothMove(forwardDirection * moveDistance));
                 }
             }
         }
     }
 
-    public void TryRotatePlayer()
+    private void TryRotatePlayer()
     {
         // Check if timer allows rotation
         if (Time.time >= nextRotateTime)
@@ -139,14 +155,15 @@ public class GameInput : MonoBehaviour
             // Update timer
             nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
 
-            if (Mathf.Abs(rotationValue) > 0f && !isMoving) // Check for any rotation value
+            if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
             {
                 //Debug.Log("Rotated");
                 float rotationAmount = rotationValue > 0 ? -90f : 90f;
 
-                // Lock movement
+                // Begin rotation
                 isRotating = true;
 
+                // Start rotation coroutine
                 StartCoroutine(SmoothRotate(rotationAmount));
             }
         }
@@ -167,12 +184,11 @@ public class GameInput : MonoBehaviour
             yield return null;
         }
 
-        // Unlock rotations
-        isMoving = false;
-
         // Ensure the object ends exactly at the final position
         playerObject.transform.position = targetPosition;
 
+        // Alert movement stop
+        isMoving = false;
     }
 
     // Coroutine for smooth rotations
@@ -189,11 +205,11 @@ public class GameInput : MonoBehaviour
             yield return null;
         }
 
-        // Unlock movement
-        isRotating = false;
-
         // Ensure the object ends exactly at the final rotation
         playerObject.transform.rotation = targetRotation;
+
+        // Alert rotation stop
+        isRotating = false;
     }
 
     private bool CanMove(Vector3 direction, GameObject source)
@@ -203,7 +219,7 @@ public class GameInput : MonoBehaviour
 
         /*
          Raycasting is a lot like sending out a laser and checking if it hits something within a certain range, in this case moveDistance. 
-         The offset helps with consistency and allows for player to have a box collider.
+         The offset helps with consistency, but basically just moves the source of the laser up a bit.
          It will only detect walls.
          - Jesper
          */
