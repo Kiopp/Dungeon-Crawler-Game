@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using GameInputActions;
 
 //A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
