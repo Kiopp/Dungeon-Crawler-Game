@@ -21,10 +21,9 @@ public class GameInput : MonoBehaviour
     private float nextRotateTime = 0.0f;
     private bool isMoving = false;
     private bool keepMoving = false;
-    private bool startMove = false;
     private bool isRotating = false;
     private bool keepRotating = false;
-    private bool startRotate = false;
+    private bool movementEnabled = false;
     private GameObject playerObject = null;
     public GameObject PlayerObject
     {
@@ -47,12 +46,26 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Rotate.canceled += ctx => OnRotateRelease();
     }
 
-    #region EventMethods
+    private void Update()
+    {
+        // Check valid playerObject, enabled movement and player movement not already in progress
+        if (playerObject != null && movementEnabled && !isMoving && !isRotating)
+        {
+            if (keepMoving)
+            {
+                TryMovePlayer();
+            }
+            else if (keepRotating) // Prioritize movement over rotation, can't do both at once
+            {
+                TryRotatePlayer();
+            }
+        }
+    }
+
+    #region Event Methods
     public void OnMoveStart()
     {
         keepMoving = true;
-        startMove = true;
-        TryMovePlayer();
     }
     public void OnMoveRelease()
     {
@@ -62,8 +75,6 @@ public class GameInput : MonoBehaviour
     public void OnRotateStart()
     {
         keepRotating = true;
-        startRotate = true;
-        TryRotatePlayer();
     }
     public void OnRotateRelease()
     {
@@ -71,36 +82,29 @@ public class GameInput : MonoBehaviour
     }
     #endregion
 
-    #region PublicGetMethods
-    public float GetNextMoveTime()
+    #region Public Methods
+    /// <summary>
+    /// Disables player movement
+    /// </summary>
+    public void DisableMovement()
     {
-        return nextMoveTime;
+        movementEnabled = false;
     }
 
-    public float GetNextRotateTime()
+    /// <summary>
+    /// Enables player movement
+    /// </summary>
+    public void EnableMovement()
     {
-        return nextRotateTime;
-    }
-
-    public bool IsMoving()
-    {
-        return isMoving;
-    }
-
-    public bool IsRotating()
-    {
-        return isRotating;
+        movementEnabled = true;
     }
     #endregion
 
     public void TryMovePlayer()
     {
-        // Check if key is just pressed or if timer allows move
-        if (playerObject != null && keepMoving && Time.time >= nextMoveTime || startMove)
+        // Check if timer allows rotation
+        if (Time.time >= nextMoveTime)
         {
-            // Only run once on start
-            startMove = false;
-
             // Get player movement input
             bool moving = playerInputActions.Player.Move.IsPressed();
 
@@ -115,16 +119,35 @@ public class GameInput : MonoBehaviour
                 // Multiple raycasts for 3D collision detection
                 if (CanMove(forwardDirection, playerObject))
                 {
-                    Debug.Log("Movement start");
-                    //playerObject.transform.position += forwardDirection * moveDistance; // LEGACY CODE PLEASE REMOVE
-
                     // Lock rotations
                     isMoving = true;
 
                     StartCoroutine(SmoothMove(forwardDirection * moveDistance));
-                    
-                    
                 }
+            }
+        }
+    }
+
+    public void TryRotatePlayer()
+    {
+        // Check if timer allows rotation
+        if (Time.time >= nextRotateTime)
+        {
+            // Get player rotation input
+            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
+
+            // Update timer
+            nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
+
+            if (Mathf.Abs(rotationValue) > 0f && !isMoving) // Check for any rotation value
+            {
+                //Debug.Log("Rotated");
+                float rotationAmount = rotationValue > 0 ? -90f : 90f;
+
+                // Lock movement
+                isRotating = true;
+
+                StartCoroutine(SmoothRotate(rotationAmount));
             }
         }
     }
@@ -149,34 +172,7 @@ public class GameInput : MonoBehaviour
 
         // Ensure the object ends exactly at the final position
         playerObject.transform.position = targetPosition;
-        
-    }
 
-    public void TryRotatePlayer()
-    {
-        // Check if key is just pressed or if timer allows rotation
-        if (playerObject != null && keepRotating && Time.time >= nextRotateTime || startRotate)
-        {
-            // Only run once on start
-            startRotate = false;
-
-            // Get player rotation input
-            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
-
-            // Update timer
-            nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
-
-            if (Mathf.Abs(rotationValue) > 0f && !isMoving) // Check for any rotation value
-            {
-                //Debug.Log("Rotated");
-                float rotationAmount = rotationValue > 0 ? -90f : 90f;
-
-                // Lock movement
-                isRotating = true;
-
-                StartCoroutine(SmoothRotate(rotationAmount));
-            }
-        }
     }
 
     // Coroutine for smooth rotations
