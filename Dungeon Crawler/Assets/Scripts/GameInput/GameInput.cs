@@ -15,9 +15,13 @@ public class GameInput : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     private PlayerInputActions playerInputActions;
 
+    // Simulation
+    private bool isTest = false;
+
     // Movement/rotation variables
     private float nextMoveTime = 0.0f;
     private float nextRotateTime = 0.0f;
+    private float rotationValue = 0.0f;
     private bool isMoving = false;
     private bool keepMoving = false;
     private bool isRotating = false;
@@ -55,7 +59,7 @@ public class GameInput : MonoBehaviour
             {
                 TryMovePlayer();
             }
-            else if (keepRotating) 
+            else if (keepRotating && Time.time >= nextRotateTime) 
             {
                 TryRotatePlayer();
             }
@@ -102,7 +106,6 @@ public class GameInput : MonoBehaviour
     /// </summary>
     public void DisableMovement()
     {
-        Debug.Log("Movement Disabled!");
         movementEnabled = false;
     }
 
@@ -111,7 +114,6 @@ public class GameInput : MonoBehaviour
     /// </summary>
     public void EnableMovement()
     {
-        Debug.Log("Movement Enabled!");
         movementEnabled = true;
     }
 
@@ -129,11 +131,20 @@ public class GameInput : MonoBehaviour
     {
         return rotateDelay;
     }
+
+    public void EnableSimulation()
+    {
+        isTest = true;
+    }
+
+    public void SetRotationValue(float value)
+    {
+        rotationValue = value;
+    }
     #endregion
 
     private void TryMovePlayer()
     {
-        Debug.Log("Enter TryMovePlayer");
         // Update timer
         nextMoveTime = Time.time + moveDelay + 0.1f; // Extra .1 second delay for coroutine to finish
 
@@ -143,7 +154,6 @@ public class GameInput : MonoBehaviour
         // Multiple raycasts for 3D collision detection
         if (CanMove(forwardDirection, playerObject))
         {
-            Debug.Log("Movement approved!");
             // Begin movement
             isMoving = true;
 
@@ -155,33 +165,28 @@ public class GameInput : MonoBehaviour
 
     private void TryRotatePlayer()
     {
-        // Check if timer allows rotation
-        if (Time.time >= nextRotateTime)
+        // Get rotation input
+        if (!isTest)
+            rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
+        
+        // Update timer
+        nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
+
+        if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
         {
-            // Get player rotation input
-            float rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
+            float rotationAmount = rotationValue > 0 ? -90f : 90f;
 
-            // Update timer
-            nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
+            // Begin rotation
+            isRotating = true;
 
-            if (Mathf.Abs(rotationValue) > 0f) // Check for any rotation value
-            {
-                //Debug.Log("Rotated");
-                float rotationAmount = rotationValue > 0 ? -90f : 90f;
-
-                // Begin rotation
-                isRotating = true;
-
-                // Start rotation coroutine
-                StartCoroutine(SmoothRotate(rotationAmount));
-            }
+            // Start rotation coroutine
+            StartCoroutine(SmoothRotate(rotationAmount));
         }
     }
 
     // Coroutine for smooth movement
     IEnumerator SmoothMove(Vector3 targetOffset)
     {
-        Debug.Log("Begin movement");
         Vector3 startingPosition = playerObject.transform.position;
         Vector3 targetPosition = startingPosition + targetOffset;
         float startTime = Time.time;
@@ -200,7 +205,6 @@ public class GameInput : MonoBehaviour
         // Alert movement stop
         isMoving = false;
 
-        Debug.Log("Movement finished!");
     }
 
     // Coroutine for smooth rotations
@@ -226,7 +230,6 @@ public class GameInput : MonoBehaviour
 
     private bool CanMove(Vector3 direction, GameObject source)
     {
-        Debug.Log("Enter CanMove");
         // Adjust number of raycasts and offset positions
         Vector3 offset = new Vector3(0, 0.5f, 0); // Offset for slightly elevated raycasts 
 

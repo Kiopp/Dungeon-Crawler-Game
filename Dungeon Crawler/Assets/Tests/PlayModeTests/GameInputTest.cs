@@ -7,8 +7,7 @@ using UnityEngine.TestTools;
 [TestFixture]
 public class GameInputTest
 {
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
+    // A UnityTest behaves like a coroutine in Play Mode.
     [UnityTest]
     public IEnumerator MoveOnce()
     {
