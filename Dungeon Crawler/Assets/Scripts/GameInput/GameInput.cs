@@ -31,7 +31,7 @@ public class GameInput : MonoBehaviour
     }
 
     // Run once when first initialized, similar to a constructor
-    private void Awake()
+    void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -45,13 +45,13 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Rotate.canceled += ctx => OnRotateRelease();
     }
 
-    private void Update()
+    void Update()
     {
         // Check valid playerObject, enabled movement and player movement not already in progress
         if (playerObject != null && movementEnabled && !isMoving && !isRotating)
         {
-            // Prioritize movement over rotation, can't do both at once
-            if (keepMoving)
+            // Prioritize movement over rotation, checking timers
+            if (keepMoving && Time.time >= nextMoveTime)
             {
                 TryMovePlayer();
             }
@@ -102,6 +102,7 @@ public class GameInput : MonoBehaviour
     /// </summary>
     public void DisableMovement()
     {
+        Debug.Log("Movement Disabled!");
         movementEnabled = false;
     }
 
@@ -110,37 +111,46 @@ public class GameInput : MonoBehaviour
     /// </summary>
     public void EnableMovement()
     {
+        Debug.Log("Movement Enabled!");
         movementEnabled = true;
+    }
+
+    public float GetMoveDistance()
+    {
+        return moveDistance;
+    }
+
+    public float GetMoveDelay()
+    {
+        return moveDelay;
+    }
+
+    public float GetRotateDelay()
+    {
+        return rotateDelay;
     }
     #endregion
 
     private void TryMovePlayer()
     {
-        // Check if timer allows rotation
-        if (Time.time >= nextMoveTime)
+        Debug.Log("Enter TryMovePlayer");
+        // Update timer
+        nextMoveTime = Time.time + moveDelay + 0.1f; // Extra .1 second delay for coroutine to finish
+
+        // Get the current forward direction
+        Vector3 forwardDirection = playerObject.transform.forward.normalized;
+
+        // Multiple raycasts for 3D collision detection
+        if (CanMove(forwardDirection, playerObject))
         {
-            // Get player movement input
-            bool moving = playerInputActions.Player.Move.IsPressed();
+            Debug.Log("Movement approved!");
+            // Begin movement
+            isMoving = true;
 
-            // Update timer
-            nextMoveTime = Time.time + moveDelay + 0.1f; // Extra .1 second delay for coroutine to finish
-
-            if (moving)
-            {
-                // Get the current forward direction
-                Vector3 forwardDirection = playerObject.transform.forward.normalized;
-
-                // Multiple raycasts for 3D collision detection
-                if (CanMove(forwardDirection, playerObject))
-                {
-                    // Begin movement
-                    isMoving = true;
-
-                    // Start movement coroutine
-                    StartCoroutine(SmoothMove(forwardDirection * moveDistance));
-                }
-            }
+            // Start movement coroutine
+            StartCoroutine(SmoothMove(forwardDirection * moveDistance));
         }
+        
     }
 
     private void TryRotatePlayer()
@@ -171,6 +181,7 @@ public class GameInput : MonoBehaviour
     // Coroutine for smooth movement
     IEnumerator SmoothMove(Vector3 targetOffset)
     {
+        Debug.Log("Begin movement");
         Vector3 startingPosition = playerObject.transform.position;
         Vector3 targetPosition = startingPosition + targetOffset;
         float startTime = Time.time;
@@ -188,6 +199,8 @@ public class GameInput : MonoBehaviour
 
         // Alert movement stop
         isMoving = false;
+
+        Debug.Log("Movement finished!");
     }
 
     // Coroutine for smooth rotations
@@ -213,6 +226,7 @@ public class GameInput : MonoBehaviour
 
     private bool CanMove(Vector3 direction, GameObject source)
     {
+        Debug.Log("Enter CanMove");
         // Adjust number of raycasts and offset positions
         Vector3 offset = new Vector3(0, 0.5f, 0); // Offset for slightly elevated raycasts 
 
