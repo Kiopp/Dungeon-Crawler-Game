@@ -20,8 +20,7 @@ We will write in C# using a long-term support version of unity: 2022.3.22f1
 Unity LTS version 2022.3.22f1
 
 ## Compilation instructions
-1. Download unity LTS version 2022.3.22f1
-   Download unity [here](https://unity.com/releases/editor/qa/lts-releases)
+1. Download unity LTS version 2022.3.22f1, Unity download can be found [here](https://unity.com/releases/editor/qa/lts-releases)
 2. Open your command terminal of choice.
 3. Execute the following command:
    [PATH TO UNITY EDITOR EXAMPLE: D:\Programs\Unity\Unity Versions\2022.3.22f1\Editor]
