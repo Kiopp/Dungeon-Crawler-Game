@@ -30,7 +30,7 @@ Unity LTS version 2022.3.22f1
    -executeMethod [PLACEHOLDER NOT YET IMPLEMENTED]
    -outputPath [PATH WHERE THE OUTPUT FILES WILL BE LOCATED]
    -buildTarget [PLATFORM TO COMPILE FOR, EXAMPLE: StandaloneWindows OR StandaloneLinux64 OR StandaloneOSX]
-5. To resolve any issues with command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
+5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
