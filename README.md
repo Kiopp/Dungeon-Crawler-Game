@@ -22,10 +22,9 @@ Unity LTS version 2022.3.22f1
 ## Compilation instructions
 1. Download and open project in unity LTS version 2022.3.22f1
    Download unity here: https://unity.com/releases/editor/qa/lts-releases
-3. Go to File > Build Settings. In the "Platform" list, select the platform(s) you want to build the project for.
-4. Click Build.
-5. Choose a destination folder where you want to save the compiled project files.
-6. After the build completes, the compiled project will be in your selected destination folder.
+2. Open your command terminal of choice.
+3. Execute the following command: [PATH TO UNITY EDITOR EXAMPLE: D:\Programs\Unity\Unity Versions\2022.3.22f1\Editor] -quit -batchmode -logfile [PATH TO .txt FILE, SPECIFY - AS PATH TO OUTPUT DIRECTLY TO CONSOLE] -executeMethod [PLACEHOLDER NOT YET IMPLEMENTED] -outputPath [PATH WHERE THE OUTPUT FILES WILL BE LOCATED] -buildTarget [PLATFORM TO COMPILE FOR EXAMPLE: StandaloneWindows OR StandaloneLinux64 OR StandaloneOSX]
+4. To resolve any issues refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
