@@ -23,13 +23,13 @@ Unity LTS version 2022.3.22f1
 1. Download unity LTS version 2022.3.22f1, Unity download can be found [here](https://unity.com/releases/editor/qa/lts-releases)
 2. Open your command terminal of choice.
 3. Execute the following command:
-   [PATH TO UNITY EDITOR EXAMPLE: D:\Programs\Unity\Unity Versions\2022.3.22f1\Editor]
+   <PathToUnityEditor>
    -quit
    -batchmode
-   -logfile [PATH TO .txt FILE, SPECIFY - AS PATH TO OUTPUT DIRECTLY TO CONSOLE]
-   -executeMethod [PLACEHOLDER NOT YET IMPLEMENTED]
-   -outputPath [PATH WHERE THE OUTPUT FILES WILL BE LOCATED]
-   -buildTarget [PLATFORM TO COMPILE FOR, EXAMPLE: StandaloneWindows OR StandaloneLinux64 OR StandaloneOSX]
+   -logfile <PathTo.txt>
+   -executeMethod <MethodNotYetImplemented>
+   -outputPath <PathForCompiledProgram>
+   -buildTarget <TargetPlatformToCompileTo>
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Kanban board
