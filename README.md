@@ -35,6 +35,9 @@ Unity LTS version 2022.3.22f1
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
 
+##Assets used
+1. Dungeon walls, floor, ceiling and decoration meshes/textures made by [Gridness Studio](https://assetstore.unity.com/packages/3d/environments/dungeons/lite-dungeon-pack-low-poly-3d-art-by-gridness-242692)
+
 ## Created by:
 - Kiopp, Jesper Wentzell
 - Vencilo, Axel Bechtel
