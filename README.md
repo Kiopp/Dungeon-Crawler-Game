@@ -23,18 +23,23 @@ Unity LTS version 2022.3.22f1
 1. Download unity LTS version 2022.3.22f1, Unity download can be found [here](https://unity.com/releases/editor/qa/lts-releases)
 2. Open your command terminal of choice.
 3. Execute the following command:
-   [PathToUnityEditor]
+   `<PathToUnityEditor>
    -quit
    -batchmode
-   -logfile [PathTo.txt]
-   -executeMethod [MethodNotYetImplemented]
-   -outputPath [PathForCompiledProgram]
-   -buildTarget [TargetPlatformToCompileFor]
+   -logfile <PathTo.txt>
+   -executeMethod <MethodNotYetImplemented>
+   -outputPath <PathForCompiledProgram>
+   -buildTarget <TargetPlatformToCompileFor>`
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Unit tests
 To run unit tests in unity from the command line you can run this command:
-
+`[PathToUnityEditor]
+-projectPath <PathToTheProject>
+-runTests
+-testResults <PathToTestResultFile>.xml
+-batchmode
+-quit`
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
