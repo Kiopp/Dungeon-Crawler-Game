@@ -6,9 +6,6 @@ using UnityEditor.Build.Reporting;
 using UnityEditorInternal;
 using UnityEngine;
 
-/// <summary>
-/// Script base from official Unity documentation: https://docs.unity.com/embeddedlinux/en/manual/how-to-build-using-cli
-/// </summary>
 public class Builder
 {
     private static void BuildWindows()
