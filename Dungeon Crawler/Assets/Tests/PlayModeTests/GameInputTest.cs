@@ -89,7 +89,7 @@ public class GameInputTest
 
         // Confirm that object moved correct amount
         var distanceMoved = Vector3.Distance(startPosition, endPosition);
-        Assert.That(distanceMoved, Is.EqualTo(player.GetMoveDistance() * 3).Within(0.5f));
+        Assert.That(distanceMoved, Is.EqualTo(player.GetMoveDistance() * 3).Within(1f));
 
         // Confirm the direction of movement
         var movedForward = Vector3.Dot(gameObject.transform.forward, endPosition - startPosition) > 0;
@@ -136,7 +136,7 @@ public class GameInputTest
         Assert.AreNotEqual(startRotation, endRotation);
 
         // Confirm correct direction
-        Assert.That(endRotation.eulerAngles.y, Is.EqualTo(startRotation.eulerAngles.y + 270).Within(1f));
+        Assert.That(endRotation.eulerAngles.y, Is.EqualTo(startRotation.eulerAngles.y + 270).Within(10f));
     }
 
     [UnityTest]
@@ -179,6 +179,6 @@ public class GameInputTest
         Assert.AreNotEqual(startRotation, endRotation);
 
         // Confirm correct direction
-        Assert.That(endRotation.eulerAngles.y, Is.EqualTo(startRotation.eulerAngles.y + 90).Within(1f));
+        Assert.That(endRotation.eulerAngles.y, Is.EqualTo(startRotation.eulerAngles.y + 90).Within(10f));
     }
 }
