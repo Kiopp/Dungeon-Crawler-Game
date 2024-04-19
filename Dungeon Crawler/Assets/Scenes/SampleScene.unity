@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63c533b4c1c44fcbada578c24e4ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  Item: {fileID: 0}
 --- !u!135 &151043948
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7916,7 +7916,6 @@ MonoBehaviour:
   Items: []
   ItemContent: {fileID: 2033733960}
   InventoryItem: {fileID: 2564175060501167658, guid: b2cde9f33abca46849fca68d365c5d5a, type: 3}
-  InventoryItems: []
 --- !u!1 &1500224808
 GameObject:
   m_ObjectHideFlags: 0
@@ -8853,7 +8852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7328472622749457888, guid: b0e0ed2169bc044b3ae857dfe454741a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ListItems
+      value: RefreshInventoryUI
       objectReference: {fileID: 0}
     - target: {fileID: 7328472622749457888, guid: b0e0ed2169bc044b3ae857dfe454741a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -9652,7 +9651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63c533b4c1c44fcbada578c24e4ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  Item: {fileID: 0}
 --- !u!65 &1801351118
 BoxCollider:
   m_ObjectHideFlags: 0
