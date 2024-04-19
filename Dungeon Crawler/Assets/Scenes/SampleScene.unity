@@ -5507,11 +5507,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063525413}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!224 &1074720924 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6399963874825864591, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
-  m_PrefabInstance: {fileID: 1460496988}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1093266164
 GameObject:
   m_ObjectHideFlags: 0
@@ -7749,7 +7744,7 @@ PrefabInstance:
     - target: {fileID: 4211521054009530173, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
       propertyPath: ItemContent
       value: 
-      objectReference: {fileID: 1074720924}
+      objectReference: {fileID: 1824002559}
     - target: {fileID: 4211521054009530173, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
       propertyPath: InventoryItem
       value: 
@@ -9511,6 +9506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c043c2c0b976b461c9a15eb44781670f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1824002559 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2840723158931776555, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
+  m_PrefabInstance: {fileID: 1460496988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1831000950
 GameObject:
   m_ObjectHideFlags: 0

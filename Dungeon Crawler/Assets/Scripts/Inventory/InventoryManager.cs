@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
         foreach (Transform child in ItemContent)
         {
             Destroy(child.gameObject);
-        }
+        }   
 
         // Re-create UI items from the Items list
         foreach (var item in Items)
