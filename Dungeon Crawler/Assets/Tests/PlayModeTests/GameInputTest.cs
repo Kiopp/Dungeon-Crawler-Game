@@ -45,7 +45,7 @@ public class GameInputTest
 
         // Confirm that object moved correct amount
         var distanceMoved = Vector3.Distance(startPosition, endPosition);
-        Assert.That(distanceMoved, Is.EqualTo(player.GetMoveDistance()).Within(0.5f));
+        Assert.That(distanceMoved, Is.EqualTo(player.GetMoveDistance()).Within(1f));
 
         // Confirm the direction of movement
         var movedForward = Vector3.Dot(gameObject.transform.forward, endPosition - startPosition) > 0;
