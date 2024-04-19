@@ -1,4 +1,7 @@
 # Dungeon Crawler
+
+![main workflow](https://github.com/Kiopp/Softwere-Development-Repository/actions/workflows/main.yml/badge.svg)
+
 ## Description 
 We're creating a simple first-person dungeon crawler. Players will navigate a 3D environment, interact with objects, and fight enemies. During their exploration, they'll encounter various situations like meeting other adventurers and solving puzzles. Finding and collecting items will make the player more powerful, increasing their chances of survival. The game will feature 3D graphics and grid-like movement.
 
