@@ -9,15 +9,16 @@ public class InventoryItemController : MonoBehaviour
 
     public Button RemoveButton;
 
-    public  void RemoveItem()
+    public void RemoveItem()
     {
+        if (item == null)
+        {
+            Debug.LogError("Attempted to remove a null item.");
+            return;
+        }
+
+        Debug.Log($"Removing item: {item.itemName}");
         InventoryManager.Instance.Remove(item);
-
         Destroy(gameObject);
-    }
-
-    public void AddItem(Item newItem)
-    {
-        item = newItem;
     }
 }
