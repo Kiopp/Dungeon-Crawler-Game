@@ -17,7 +17,7 @@ public class InventoryItemController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Removing item: {item.itemName}");
+        Debug.Log($"Removing item: {item.GetName}");
         InventoryManager.Instance.Remove(item);
         Destroy(gameObject);
     }

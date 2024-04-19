@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class Item : ScriptableObject
 {
-    public int id;
-    public string itemName;
-    public int value;
-    public Sprite icon;
+    private int id;
+    private string itemName;
+    private int value;
+    private Sprite icon;
     [TextArea]
-    public string description;
+    private string description;
+
+    public string GetName
+    {
+        get { return itemName; }
+    }
+
+    public Sprite GetIcon
+    {
+        get { return icon; }
+    }
 }

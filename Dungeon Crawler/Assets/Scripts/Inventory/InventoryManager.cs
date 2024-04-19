@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Transform ItemContent;
     public GameObject InventoryItem;
 
-    private void Awake()
+    public void Awake()
     {
         Instance = this;
     }
@@ -33,7 +33,8 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RefreshInventoryUI()
+    [SerializeField]
+    private void RefreshInventoryUI()
     {
         // Clear existing UI items
         foreach (Transform child in ItemContent)
@@ -49,8 +50,8 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
 
-            itemName.text = item.itemName;
-            itemIcon.sprite = item.icon;
+            itemName.text = item.GetName;
+            itemIcon.sprite = item.GetIcon;
 
             // Set the item on the controller
             InventoryItemController controller = obj.GetComponent<InventoryItemController>();

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemCrontroller : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
-    public Item Item;
+    [SerializeField]
+    private Item Item;
 }
