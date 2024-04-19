@@ -16,10 +16,9 @@ jobs:
       # Cache
       - uses: actions/cache@v3
         with:
-          path: .git/lfs
-          key: Library-${{ hashFiles('Dungeon Crawler/Assets/**', 'Dungeon Crawler/Packages/**', 'Dungeon Crawler/ProjectSettings/**') }}
+          key: cache-${{ hashFiles('Dungeon Crawler/Assets/**', 'Dungeon Crawler/Packages/**', 'Dungeon Crawler/ProjectSettings/**')}}
           restore-keys: |
-            Library-
+            cache-
 
       # Test
       - name: Run tests
