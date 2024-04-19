@@ -42,11 +42,16 @@ Unity LTS version 2022.3.22f1
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Unit tests
-WORK IN PROGRESS!
-To run unit tests in unity from the command line you can run this command:
+To run unit tests in unity from the command line you can run these commands:
+#### Run PlayMode tests
 ```
-<PathToUnityEditor> -projectPath <PathToTheProject> -runTests -testResults <PathToTestResultFile>.xml -batchmode -quit
+"<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
 ```
+#### Run EditMode tests
+```
+"<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform EditMode -projectPath "<PathToTheProject>"
+```
+The main difference between PlayMode and EditMode is if the editor should simulate an actual game environment or just run scripts. 
 To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
 
 ## Kanban board
