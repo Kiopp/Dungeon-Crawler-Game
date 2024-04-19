@@ -42,7 +42,7 @@ Unity LTS version 2022.3.22f1
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Unit tests
-To run unit tests in unity from the command line you can run these commands:
+- To run unit tests in unity from the command line you can run these commands:
 #### Run PlayMode tests
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
@@ -51,8 +51,11 @@ To run unit tests in unity from the command line you can run these commands:
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform EditMode -projectPath "<PathToTheProject>"
 ```
-The main difference between PlayMode and EditMode is if the editor should simulate an actual game environment or just run scripts. 
-To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
+- **The test results will be presented as a .xml file in the project folder, named something along the lines of TestResults-638491452845542675.xml**
+- The choosing between PlayMode and EditMode determines if editor should simulate an actual game environment for the tests or not.
+   - If you are running tests that directly depends on or interacts with GameObjects in the environment, then you should run it in PlayMode.
+   - If you are running tests that **don't** interact with the game environment you should run it in EditMode.
+- To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
