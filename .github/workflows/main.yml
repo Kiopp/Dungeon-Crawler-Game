@@ -16,10 +16,10 @@ jobs:
       # Cache
       - uses: actions/cache@v3
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: 'Dungeon Crawler'
+          key: Dungeon Crawler-${{ hashFiles('Dungeon Crawler/Assets/**', 'Dungeon Crawler/Packages/**', 'Dungeon Crawler/ProjectSettings/**') }}
           restore-keys: |
-            Library-
+            Dungeon Crawler-
 
       # Test
       - name: Run tests
