@@ -39,13 +39,12 @@ Unity LTS version 2022.3.22f1
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Unit tests
+WORK IN PROGRESS!
 To run unit tests in unity from the command line you can run this command:
-`[PathToUnityEditor]
--projectPath <PathToTheProject>
--runTests
--testResults <PathToTestResultFile>.xml
--batchmode
--quit`
+```
+<PathToUnityEditor> -projectPath <PathToTheProject> -runTests -testResults <PathToTestResultFile>.xml -batchmode -quit
+```
+To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
