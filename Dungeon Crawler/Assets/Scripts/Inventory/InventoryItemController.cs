@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryItemController : MonoBehaviour
 {
-    public Item item;
+    private Item item;
 
-    public Button RemoveButton;
+    public Item Item 
+    {
+        get { return item; }
+        set { item = value; } // Setter allows the item to be updated if necessary
+    }
 
     public void RemoveItem()
     {

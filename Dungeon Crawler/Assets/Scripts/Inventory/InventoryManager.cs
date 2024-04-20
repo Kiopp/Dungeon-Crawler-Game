@@ -33,8 +33,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private void RefreshInventoryUI()
+    public void RefreshInventoryUI()
     {
         // Clear existing UI items
         foreach (Transform child in ItemContent)
@@ -55,7 +54,7 @@ public class InventoryManager : MonoBehaviour
 
             // Set the item on the controller
             InventoryItemController controller = obj.GetComponent<InventoryItemController>();
-            controller.item = item; // Set directly
+            controller.Item = item; // Set directly
 
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
