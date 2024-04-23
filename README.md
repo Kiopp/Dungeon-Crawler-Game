@@ -68,7 +68,7 @@ To generate code coverage information add the following flag to the unit testing
 ```
 -coverageOptions generateBadgeReport
 ```
-- To learn more or resolve any issues with the code coverage information refer to the [Unity Code Coverage documentation](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html).
+- To learn more or resolve any issues with the code coverage information refer to the [Unity Code Coverage](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html)  documentation.
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
