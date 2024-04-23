@@ -43,7 +43,7 @@ Unity LTS version 2022.3.22f1
 
 ## Unit tests
 ### Command line:
-To run unit tests with unity from the command line you can run these commands:
+To manually run unit tests with unity from the command line you can run these commands:
 #### Run PlayMode tests:
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
@@ -52,19 +52,19 @@ To run unit tests with unity from the command line you can run these commands:
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform EditMode -projectPath "<PathToTheProject>"
 ```
-- **The test results will be presented as a .xml file in the project folder, named something along the lines of TestResults-638491452845542675.xml**
+- **The test results will be presented as an .xml file in the project folder, named something like TestResults-638491452845542675.xml**
 - Choosing between PlayMode and EditMode determines if the editor should run an actual game environment for the tests or not.
-   - If you are running tests that directly depends on or interacts with GameObjects in the environment, then you should run it in PlayMode.
-   - If you are running tests that **don't** interact with the game environment you should run it in EditMode.
+   - If you are running tests that directly depend on or interacts with GameObjects in the environment, then you should run PlayMode.
+   - If you are running tests that only tests code logic you should run EditMode.
 - To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
-### Code coverage information:
-To generate code coverage information add the following flag to the command:
+## Code coverage information:
+To generate code coverage information add the following flag to the unit testing command:
 ```
 -enableCodeCoverage
 ```
-- The code coverage information is presented as a html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
-- The system will also save a less detailed history of all the times you generate the code coverage information as xml files in `\Dungeon Crawler\CodeCoverage\Report-history`.
-- To generate badges in svg and png format add the following to the command:
+- The code coverage information is presented as an html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
+- The system also saves a less detailed history of all the code coverage you do as xml files at `\Dungeon Crawler\CodeCoverage\Report-history`.
+- If you also want to generate .svg and .png badges, add the following flag to the command:
 ```
 -coverageOptions generateBadgeReport
 ```
