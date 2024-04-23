@@ -58,6 +58,12 @@ To run unit tests with unity from the command line you can run these commands:
    - If you are running tests that **don't** interact with the game environment you should run it in EditMode.
 - To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
 
+## Linter (WIP)
+We will be using StyleCop.Analyzers for our code. The only problem being it does not have built-in support for unity projects, and will therefore be removed every time the editor regenerates project files. But you can always install it again using the following command in the NuGet command line:
+```
+Install-Package StyleCop.Analyzers
+```
+
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
 
