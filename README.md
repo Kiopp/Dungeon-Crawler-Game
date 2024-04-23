@@ -53,10 +53,22 @@ To run unit tests with unity from the command line you can run these commands:
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform EditMode -projectPath "<PathToTheProject>"
 ```
 - **The test results will be presented as a .xml file in the project folder, named something along the lines of TestResults-638491452845542675.xml**
-- The choosing between PlayMode and EditMode determines if the editor should simulate an actual game environment for the tests or not.
+- Choosing between PlayMode and EditMode determines if the editor should run an actual game environment for the tests or not.
    - If you are running tests that directly depends on or interacts with GameObjects in the environment, then you should run it in PlayMode.
    - If you are running tests that **don't** interact with the game environment you should run it in EditMode.
 - To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
+### Code coverage information:
+To generate code coverage information add the following flag to the command:
+```
+-enableCodeCoverage
+```
+- The code coverage information is presented as a html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
+- The system will also save a less detailed history of all the times you generate the code coverage information as xml files in `\Dungeon Crawler\CodeCoverage\Report-history`.
+- To generate badges in svg and png format add the following to the command:
+```
+-coverageOptions generateBadgeReport
+```
+- To learn more or resolve any issues with the code coverage information refer to the [Unity documentation](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html).
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
