@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Item : ScriptableObject
 {
+    [SerializeField]
     private int id;
+    [SerializeField]
     private string itemName;
+    [SerializeField]
     private int value;
+    [SerializeField]
     private Sprite icon;
+    [SerializeField]
     [TextArea]
     private string description;
 
