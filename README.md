@@ -1,4 +1,7 @@
 # Dungeon Crawler
+
+![main workflow](https://github.com/Kiopp/Softwere-Development-Repository/actions/workflows/main.yml/badge.svg)
+
 ## Description 
 We're creating a simple first-person dungeon crawler. Players will navigate a 3D environment, interact with objects, and fight enemies. During their exploration, they'll encounter various situations like meeting other adventurers and solving puzzles. Finding and collecting items will make the player more powerful, increasing their chances of survival. The game will feature 3D graphics and grid-like movement.
 
@@ -39,12 +42,33 @@ Unity LTS version 2022.3.22f1
 5. To learn more or resolve any issues with the command refer to the [Unity documentation](https://docs.unity3d.com/Manual/EditorCommandLineArguments.html).
 
 ## Unit tests
-WORK IN PROGRESS!
-To run unit tests in unity from the command line you can run this command:
+### Command line:
+To manually run unit tests with unity from the command line you can run these commands:
+#### Run PlayMode tests:
 ```
-<PathToUnityEditor> -projectPath <PathToTheProject> -runTests -testResults <PathToTestResultFile>.xml -batchmode -quit
+"<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
 ```
-To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
+#### Run EditMode tests:
+```
+"<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform EditMode -projectPath "<PathToTheProject>"
+```
+- **The test results will be presented as an .xml file in the project folder, named something like TestResults-638491452845542675.xml**
+- Choosing between PlayMode and EditMode determines if the editor should run an actual game environment for the tests or not.
+   - If you are running tests that directly depend on or interacts with GameObjects in the environment, then you should run PlayMode.
+   - If you are running tests that only tests code logic you should run EditMode.
+- To learn more or resolve any issues refer to the official [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/reference-command-line.html) documentation.
+## Code coverage information:
+To generate code coverage information add the following flag to the unit testing command:
+```
+-enableCodeCoverage
+```
+- The code coverage information is presented as an html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
+- The system also saves a less detailed history of all the code coverage you do as xml files at `\Dungeon Crawler\CodeCoverage\Report-history`.
+- If you also want to generate .svg and .png badges, add the following flag to the command:
+```
+-coverageOptions generateBadgeReport
+```
+- To learn more or resolve any issues with the code coverage information refer to the [Unity Code Coverage](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html)  documentation.
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2

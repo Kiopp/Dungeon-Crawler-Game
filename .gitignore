@@ -11,6 +11,8 @@
 [Uu]ser[Ss]ettings/
 bin/
 .DS_Store
+CodeCoverage/
+*.xml
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
