@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using GameInputActions;
-using PlasticPipe.PlasticProtocol.Messages;
 
 //A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
