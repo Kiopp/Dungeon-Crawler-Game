@@ -8,13 +8,13 @@ using PlasticPipe.PlasticProtocol.Messages;
 //A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
 {
-    public GameObject playerObject;
+    private BattleTrigger callingTrigger; // The BattleTrigger that initiated the latest battle
     private IBattleEntity Player; //The player entity in the battle
     private IBattleEntity Enemy; //The enemy entity in the battle
 
     private PlayerInputActions playerInputActions; //Handles the players input
 
-    private bool PlayerIsAttacking = false;
+    private bool playerIsAttacking = false;
 
     void Awake()
     {
@@ -25,14 +25,23 @@ public class BattleManager : MonoBehaviour
         playerInputActions.Player.Attack.canceled += ctx => StopPlayerAttack();
     }
 
+    /// <summary>
+    /// Saves a reference to the latest BattleTrigger that starts a battle
+    /// </summary>
+    /// <param name="caller"></param>
+    public void BattleTriggerCheckIn(BattleTrigger caller)
+    {
+        callingTrigger = caller;
+    }
+
     public void OnPlayerAttack()
     {
-        PlayerIsAttacking = true;
+        playerIsAttacking = true;
     }
 
     public void StopPlayerAttack()
     {
-        PlayerIsAttacking = false;
+        playerIsAttacking = false;
     }
 
     //Disables the player input when the script is disabled
@@ -47,8 +56,6 @@ public class BattleManager : MonoBehaviour
         Player = player;
         Enemy = enemy;
 
-        playerObject.GetComponent<CameraControl>().DisableMovement();
-
         Debug.Log("The battle has begun");
         StartCoroutine(BattleLoop()); //Starts the battle loop coroutine
     }
@@ -60,7 +67,7 @@ public class BattleManager : MonoBehaviour
         {
             //Player turn
             Debug.Log("Player turn");
-            yield return new WaitUntil(() => PlayerIsAttacking); //Checks if the attack input is triggered
+            yield return new WaitUntil(() => playerIsAttacking); //Checks if the attack input is triggered
             Player.Attack(Enemy); //The player attacks the enemy
 
             //Checks if the enemy is dead after the player turn
@@ -71,10 +78,11 @@ public class BattleManager : MonoBehaviour
                 break;
             }
 
-            yield return new WaitForSeconds(1);
-
             //Enemy turn
             Debug.Log("Enemy turn");
+
+            yield return new WaitForSeconds(1);
+
             Enemy.Attack(Player); //Enemy attacks player
 
             //Checks if the player is dead after the enemy turn
@@ -89,9 +97,12 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when either the player or the enemy dies
+    /// </summary>
     private void EndBattle()
     {
-        playerObject.GetComponent<CameraControl>().EnableMovement();
+        callingTrigger.BattleEnded(); // Notify calling triggerobject that the battle has ended
     }
 
     public bool CheckBattleResult()
