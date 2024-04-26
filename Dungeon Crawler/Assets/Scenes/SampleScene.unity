@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18367611, g: 0.22913252, b: 0.3050355, a: 1}
+  m_IndirectSpecularColor: {r: 0.18367594, g: 0.22913201, b: 0.30503473, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2546,7 +2546,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1644052350}
-  enemy: {fileID: 1417622235}
+  enemyObject: {fileID: 1417622235}
+--- !u!54 &487121654
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487121645}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &498098881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,7 +3520,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1644052350}
-  enemy: {fileID: 1417622235}
+  enemyObject: {fileID: 1417622235}
+--- !u!54 &696855716
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696855707}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4277,6 +4331,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9065108747922820337, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 487121650}
+    - targetCorrespondingSourceObject: {fileID: 9065108747922820337, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 487121654}
   m_SourcePrefab: {fileID: 100100000, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
 --- !u!1001 &822126249
 PrefabInstance:
@@ -4337,6 +4394,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9065108747922820337, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 696855712}
+    - targetCorrespondingSourceObject: {fileID: 9065108747922820337, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696855716}
   m_SourcePrefab: {fileID: 100100000, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
 --- !u!1 &823255153
 GameObject:
@@ -8692,7 +8752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be66dca1e8efe348a7a97429adf3280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
 --- !u!4 &1644052351
 Transform:
   m_ObjectHideFlags: 0
@@ -9288,7 +9347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1644052350}
-  enemy: {fileID: 1417622235}
+  enemyObject: {fileID: 1417622235}
 --- !u!4 &1773074991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1903271488851615599, guid: 965e715f6eef1df4ab2591b18e0eb6db, type: 3}
