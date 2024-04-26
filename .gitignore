@@ -10,6 +10,7 @@
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
 bin/
+.DS_Store
 CodeCoverage/
 *.xml
 
