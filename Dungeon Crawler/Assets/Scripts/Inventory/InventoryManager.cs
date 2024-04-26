@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
 
-    public Transform ItemContent;
-    public GameObject InventoryItem;
+    [SerializeField]
+    private List<Item> Items = new List<Item>();
+
+    [SerializeField]
+    private Transform ItemContent;
+    [SerializeField]
+    private GameObject InventoryItem;
 
     public void Awake()
     {
@@ -51,10 +55,6 @@ public class InventoryManager : MonoBehaviour
 
             itemName.text = item.GetName;
             itemIcon.sprite = item.GetIcon;
-
-            // Set the item on the controller
-            InventoryItemController controller = obj.GetComponent<InventoryItemController>();
-            controller.Item = item; // Set directly
 
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
