@@ -166,6 +166,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 176609473306397326}
     m_Modifications:
+    - target: {fileID: 1099239592410694309, guid: 2ea646fcca42a79449c0f32bead96976, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3009981
+      objectReference: {fileID: 0}
     - target: {fileID: 4157272200903244312, guid: 2ea646fcca42a79449c0f32bead96976, type: 3}
       propertyPath: m_Name
       value: 1x1 Hallway (3)
