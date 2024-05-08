@@ -75,6 +75,7 @@ https://github.com/users/Kiopp/projects/2
 
 ## Assets used
 - Dungeon walls, floor, ceiling and decoration meshes/textures made by [Gridness Studio](https://assetstore.unity.com/packages/3d/environments/dungeons/lite-dungeon-pack-low-poly-3d-art-by-gridness-242692)
+- Enemy sprites from [itch.io](https://free-game-assets.itch.io/free-chaos-monsters-3232-icon-pack)
 
 ## Created by:
 - Kiopp, Jesper Wentzell
