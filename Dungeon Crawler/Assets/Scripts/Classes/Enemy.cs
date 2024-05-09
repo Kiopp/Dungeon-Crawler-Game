@@ -13,7 +13,7 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start(); //Calls the base class start to initialize the currenthealth
-        Health = startHealth; //Sets the enemy starting health
+        currentHealth = startHealth; //Sets the enemy health to the enemy starting health
         Damage = attackDamage; //Sets the enemy damage
     }
 
@@ -28,13 +28,13 @@ public class Enemy : Entity
     {
         if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
         {
-            Health -= Damage; //Reduces the enemy health by the damage dealt
+            currentHealth -= Damage; //Reduces the enemy health by the damage dealt
         }
     }
 
     //checks if the enemy has been killed
     public override bool Dead()
     {
-        return Health <= 0; //Returns true if the enemy is dead
+        return currentHealth <= 0; //Returns true if the enemy is dead
     }
 }
