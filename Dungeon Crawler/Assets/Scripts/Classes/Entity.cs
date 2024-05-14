@@ -10,12 +10,12 @@ public abstract class Entity : MonoBehaviour, IBattleEntity
     [SerializeField] public int Damage { get; protected set; } //The amount of damage an entity can deal (Visible and editable in unity inspector)
     [SerializeField] public float Dodge { get; protected set; } //The dodge probability of an entity (Visible and editable in unity inspector)
 
-    protected int Health; //Current health of the entity
+    public int currentHealth { get; protected set; } //Current health of the entity
 
     //Start is called before the first fram update
     protected virtual void Start()
     {
-        Health = startingHealth; //Initialize the current health to the starting health
+        currentHealth = startingHealth; //Initialize the current health to the starting health
     }
 
     //Attacks another entity

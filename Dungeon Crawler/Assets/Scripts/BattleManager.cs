@@ -70,7 +70,7 @@ public class BattleManager : MonoBehaviour
             Player.Attack(Enemy); //The player attacks the enemy
 
             //Checks if the enemy is dead after the player turn
-            if (Enemy.Dead())
+            if (CheckBattleResult())
             {
                 Debug.Log("Enemy is dead, Player wins!");
                 EndBattle();
@@ -85,7 +85,7 @@ public class BattleManager : MonoBehaviour
             Enemy.Attack(Player); //Enemy attacks player
 
             //Checks if the player is dead after the enemy turn
-            if (Player.Dead())
+            if (CheckBattleResult())
             {
                 Debug.Log("Player is dead, Enemy wins!");
                 EndBattle();
@@ -104,8 +104,9 @@ public class BattleManager : MonoBehaviour
         callingTrigger.BattleEnded(); // Notify calling triggerobject that the battle has ended
     }
 
+    //Checks if the battle is over
     public bool CheckBattleResult()
     {
-        return Player.Dead() || Enemy.Dead();
+        return Player.Dead() ^ Enemy.Dead();
     }
 }
