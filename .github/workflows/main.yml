@@ -26,6 +26,7 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           DISABLE_ERRORS: true
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_JSCPD: false
           VALIDATE_MARKDOWN: false
           unityVersion: 2022.3.22f1
