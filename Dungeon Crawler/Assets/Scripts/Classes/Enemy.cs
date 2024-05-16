@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [SerializeField] private int startHealth; //Enemy starting health (Visisble and editable in unity inspector)
-    [SerializeField] private int attackDamage; //Enemy damage (Visisble and editable in unity inspector)
+    [SerializeField] private int enemyAttackDamage; //Enemy damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Enemy dodge probability (Visisble and editable in unity inspector)
     [SerializeField] private ItemDropController itemDropper; //Item dropping controller (Visisble and editable in unity inspector)
 
@@ -14,22 +14,22 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start(); //Calls the base class start to initialize the currenthealth
-        currentHealth = startHealth; //Sets the enemy health to the enemy starting health
-        Damage = attackDamage; //Sets the enemy damage
+        CurrentHealth = startHealth; //Sets the enemy health to the enemy starting health
+        AttackDamage = enemyAttackDamage; //Sets the enemy damage
     }
 
     //Attacks the player
     public override void Attack(IBattleEntity player)
     {
-        player.TakeDamage(Damage); //Inflicts the enemy damage to the player
+        player.TakeDamage(AttackDamage); //Inflicts the enemy damage to the player
     }
 
     //Inflicts damage to the enemy
-    public override void TakeDamage(int Damage)
+    public override void TakeDamage(int damage)
     {
         if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
         {
-            currentHealth -= Damage; //Reduces the enemy health by the damage dealt
+            CurrentHealth -= damage; //Reduces the enemy health by the damage dealt
         }
     }
 
@@ -42,6 +42,5 @@ public class Enemy : Entity
             return true; //Returns true if the enemy is dead
         }
         return false;
-        
     }
 }
