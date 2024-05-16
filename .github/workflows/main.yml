@@ -22,7 +22,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           projectPath: 'Dungeon Crawler'
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.github.token }}
           DISABLE_ERRORS: true
           OUTPUT_DETAILS: detailed
           unityVersion: 2022.3.22f1
