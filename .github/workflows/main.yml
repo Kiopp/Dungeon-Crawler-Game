@@ -15,7 +15,7 @@ jobs:
 
       # Linter test
       - name: Super-Linter
-        uses: github/super-linter@v3.15.5
+        uses: super-linter/super-linter@v5.7.2
           
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
