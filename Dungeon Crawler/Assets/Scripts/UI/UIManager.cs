@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    
+    // Define a delegate type for the event
+    public delegate void ButtonClickedAction();
+
+    // Define an event based on that delegate
+    public event ButtonClickedAction OnAttack;
 
      // An array to hold references to the Button components
     public Button[] buttons;
@@ -32,6 +38,14 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Button " + buttonIndex + " clicked.");
         // Perform additional actions based on which button was clicked
+        // If attack button is pressed perform attack action if in battle.
+        if (buttonIndex == 0)
+        {
+            // Raise the OnAttack event if Button 0 is clicked
+            OnAttack?.Invoke();
+        }
+
+
         // For example, change the text of the clicked button
         // ChangeButtonText(buttonIndex, "Clicked!");
     }

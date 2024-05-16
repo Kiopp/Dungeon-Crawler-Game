@@ -5012,7 +5012,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Attack
+
+'
 --- !u!222 &880213129
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10899,6 +10901,7 @@ GameObject:
   - component: {fileID: 1980095263}
   - component: {fileID: 1980095265}
   - component: {fileID: 1980095264}
+  - component: {fileID: 1980095266}
   m_Layer: 5
   m_Name: InteractionUI
   m_TagString: Untagged
@@ -10967,6 +10970,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980095262}
   m_CullTransparentMesh: 1
+--- !u!114 &1980095266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980095262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e295e7be91076364dbdfb0f6cb69eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1116321945}
+  - {fileID: 665781099}
+  - {fileID: 1230498774}
+  - {fileID: 355920956}
 --- !u!1 &1994858094
 GameObject:
   m_ObjectHideFlags: 0
