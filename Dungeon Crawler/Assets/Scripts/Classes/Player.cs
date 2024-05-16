@@ -17,7 +17,7 @@ public class Player : Entity
         AttackDamage = playerAttackDamage; //Sets the player damage
     }
 
-    //Attacks an enemy
+    // Attacks an enemy
     public override void Attack(IBattleEntity enemy)
     {
         enemy.TakeDamage(AttackDamage); //Inflicts the player damage to an enemy
@@ -26,13 +26,13 @@ public class Player : Entity
     //Inflicts damage to the player
     public override void TakeDamage(int damage)
     {
-        if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
+        if (Random.Range(0F, 1F) >= dodgeProbability)  // Has a chance to randomly dodge an attack
         {
             CurrentHealth -= damage; //Reduces the player health by the damage dealt
         }
     }
 
-    //Checks if the player is dead
+    // Checks if the player is dead
     public override bool Dead()
     {
         return CurrentHealth <= 0; //Returns true if the player is dead

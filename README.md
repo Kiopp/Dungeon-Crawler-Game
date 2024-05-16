@@ -70,6 +70,12 @@ To generate code coverage information add the following flag to the unit testing
 ```
 - To learn more or resolve any issues with the code coverage information refer to the [Unity Code Coverage](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html)  documentation.
 
+## Linter (WIP)
+We will be using StyleCop.Analyzers for our code. The only problem being it does not have built-in support for unity projects, and will therefore be removed every time the editor regenerates project files. But you can always install it again using the following command in the NuGet command line:
+```
+Install-Package StyleCop.Analyzers
+```
+
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
 
