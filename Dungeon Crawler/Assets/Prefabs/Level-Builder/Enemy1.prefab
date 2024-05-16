@@ -1461,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: a9dc396373c5c4cbe8cd505eaa5a5549, type: 2}
+      objectReference: {fileID: 11400000, guid: f11307adf77384bddb764a05dd81b145, type: 2}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
       value: ItemDropSprite (1)
@@ -1539,6 +1539,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6155116751244111840}
     m_Modifications:
+    - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a612af9d79a6482b81d870e2c59cbd3, type: 2}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
       value: ItemDropSprite
