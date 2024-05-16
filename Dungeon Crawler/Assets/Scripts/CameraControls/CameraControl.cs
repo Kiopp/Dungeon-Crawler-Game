@@ -12,6 +12,16 @@ public class CameraControl : MonoBehaviour
 
     }
 
+    public void DisableMovement()
+    {
+        gameInput.DisableMovement();
+    }
+
+    public void EnableMovement()
+    {
+        gameInput.EnableMovement();
+    }
+
     void Awake()
     {
         gameInput.EnableMovement();

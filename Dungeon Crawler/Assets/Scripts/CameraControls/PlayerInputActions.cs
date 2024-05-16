@@ -92,6 +92,39 @@ namespace GameInputActions
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""ArrowLeft/ArrowRight"",
+                    ""id"": ""5f8516ad-2240-41dc-a4fe-dff781af9f1f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3db99ee2-7e6a-431e-be1d-bb4b7155fbff"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a0a4288b-93da-4330-98ec-c8fecf5f93f0"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""Gamepad"",
                     ""id"": ""7d920038-4600-4b87-99f3-687c07db0ef2"",
                     ""path"": ""1DAxis"",
@@ -128,6 +161,17 @@ namespace GameInputActions
                     ""name"": """",
                     ""id"": ""4b6af9cc-56cd-44d0-a39b-d461289117cd"",
                     ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e94e5610-7233-4b6c-9733-3226d353907a"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
