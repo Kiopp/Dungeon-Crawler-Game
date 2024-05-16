@@ -24,12 +24,7 @@ jobs:
           projectPath: 'Dungeon Crawler'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           DISABLE_ERRORS: true
-          OUTPUT_FOLDER: reports
           OUTPUT_DETAILS: detailed
-          VALIDATE_JSCPD: false
-          VALIDATE_MARKDOWN: false
-          VALIDATE_JSON: false
-          VALIDATE_XML: false
           unityVersion: 2022.3.22f1
           
      
