@@ -24,7 +24,6 @@ jobs:
         with:
           projectPath: 'Dungeon Crawler'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BRANCH: main
           DISABLE_ERRORS: true
           OUTPUT_FOLDER: Reports
           OUTPUT_DETAILS: detailed
