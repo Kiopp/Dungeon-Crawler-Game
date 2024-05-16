@@ -25,4 +25,9 @@ public class ItemPickup : MonoBehaviour
     {
         Pickup();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Pickup();
+    }
 }
