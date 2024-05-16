@@ -26,6 +26,8 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           DISABLE_ERRORS: true
+          OUTPUT_FOLDER: Reports
+          OUTPUT_DETAILS: detailed
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_JSCPD: false
           VALIDATE_MARKDOWN: false
