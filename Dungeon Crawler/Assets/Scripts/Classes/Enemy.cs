@@ -8,6 +8,7 @@ public class Enemy : Entity
     [SerializeField] private int startHealth; //Enemy starting health (Visisble and editable in unity inspector)
     [SerializeField] private int enemyAttackDamage; //Enemy damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Enemy dodge probability (Visisble and editable in unity inspector)
+    [SerializeField] private ItemDropController itemDropper; //Item dropping controller (Visisble and editable in unity inspector)
 
     //Overrides the start method to initialize the enemy health and damage
     protected override void Start()
@@ -35,6 +36,11 @@ public class Enemy : Entity
     //checks if the enemy has been killed
     public override bool Dead()
     {
-        return CurrentHealth <= 0; //Returns true if the enemy is dead
+        if (CurrentHealth <= 0)
+        {
+            itemDropper.DropItem(); // Drop an item
+            return true; //Returns true if the enemy is dead
+        }
+        return false;
     }
 }
