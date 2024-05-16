@@ -36,7 +36,7 @@ public class Enemy : Entity
     //checks if the enemy has been killed
     public override bool Dead()
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             itemDropper.DropItem(); // Drop an item
             return true; //Returns true if the enemy is dead
