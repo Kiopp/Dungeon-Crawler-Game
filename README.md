@@ -26,15 +26,15 @@ Unity LTS version 2022.3.22f1
 1. Download unity LTS version 2022.3.22f1, Unity download can be found [here](https://unity.com/releases/editor/qa/lts-releases)
 2. Open your command terminal of choice.
 3. Execute the following command for your respective platform, specifying your own paths:
-   #### Windows:
+   ### Windows:
    ```
    "<PathToUnityEditor>" -quit -batchmode -executeMethod Builder.BuildWindows -projectPath "<PathToProject>"
    ```
-   #### Linux:
+   ### Linux:
    ```
    "<PathToUnityEditor>" -quit -batchmode -executeMethod Builder.BuildLinux -projectPath "<PathToProject>"
    ```
-   ##### Example compilation for windows:
+   #### Example compilation for windows:
    ```
    "C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe" -quit -batchmode -executeMethod Builder.BuildWindows -projectPath "C:\Users\MyUserName\Documents\MyUnityProject"
    ```
@@ -43,7 +43,7 @@ Unity LTS version 2022.3.22f1
 
 ## Unit tests
 ### Command line:
-To manually run unit tests with unity from the command line you can run these commands:
+To manually run unit tests with unity from the command-line you can run these commands:
 #### Run PlayMode tests:
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
@@ -62,7 +62,7 @@ To generate code coverage information add the following flag to the unit testing
 ```
 -enableCodeCoverage
 ```
-- The code coverage information is presented as an html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
+- The code coverage information is presented as an HTML page. The HTML file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
 - The system also saves a less detailed history of all the code coverage you do as xml files at `\Dungeon Crawler\CodeCoverage\Report-history`.
 - If you also want to generate .svg and .png badges, add the following flag to the command:
 ```
@@ -75,6 +75,9 @@ A linter will automatically run alongside our CI using Super-Linter through gith
 
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
+
+## Licence
+Dungeon Crawler Game is a 2024 Student Project. It is free software, and may be redistributed under the terms of the [Unity License version 4.x](https://unity.com/legal/eula)
 
 ## Assets used
 - Dungeon walls, floor, ceiling and decoration meshes/textures made by [Gridness Studio](https://assetstore.unity.com/packages/3d/environments/dungeons/lite-dungeon-pack-low-poly-3d-art-by-gridness-242692)
