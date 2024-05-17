@@ -16,9 +16,9 @@ public class Item : ScriptableObject
     private enum ItemRarity // different item rarities and their corresponding modifier values
     {
         Common = 100,
-        Uncommon = 125,
-        Rare = 150,
-        Epic = 175,
+        Uncommon = 110,
+        Rare = 125,
+        Epic = 150,
         Legendary = 200
     }
     [SerializeField] private ItemRarity Rarity; // Rarity of the item 

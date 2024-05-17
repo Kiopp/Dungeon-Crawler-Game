@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3b0666be643c49af9a50fc13e204645, type: 3}
-  m_Name: HealthPotion
+  m_Script: {fileID: 11500000, guid: d0a1de57f786d1f4f9c3d0e5f62c867e, type: 3}
+  m_Name: HealthPorion
   m_EditorClassIdentifier: 
-  id: 101
-  itemName: Health Pot
-  value: 100
+  id: 4
+  itemName: Health Potion
+  Value: 5
   icon: {fileID: 473695447, guid: d62a5b9808a20a9428ef77a8b926340d, type: 3}
-  description: 
+  description: Drink to heal 50 health
+  Rarity: 125
+  healing: 50

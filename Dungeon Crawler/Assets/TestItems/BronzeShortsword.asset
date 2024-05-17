@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3b0666be643c49af9a50fc13e204645, type: 3}
-  m_Name: BronzSword
+  m_Script: {fileID: 11500000, guid: d716f202e861cc0438ebb7d02fe8cbb7, type: 3}
+  m_Name: BronzeShortsword
   m_EditorClassIdentifier: 
-  id: 100
-  itemName: Bronz Sword
-  value: 1
+  id: 3
+  itemName: Bronze Shortsword
+  Value: 2
   icon: {fileID: 1729793340, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
-  description: 
+  description: A bronze shortsword used by most dungeon divers.
+  Rarity: 100
+  dmg: 5
