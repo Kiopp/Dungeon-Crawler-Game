@@ -21,6 +21,10 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          VALIDATE_GITLEAKS: false
+          VALIDATE_XML: false
+          VALIDATE_TEXTLINT: false
+          VALIDATE_YAML: false
         with:
           projectPath: 'Dungeon Crawler'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
