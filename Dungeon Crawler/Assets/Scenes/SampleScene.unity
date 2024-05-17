@@ -5105,7 +5105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 100
-  attackDamage: 10
+  playerAttackDamage: 10
   dodgeProbability: 0.5
 --- !u!1 &1037347608
 GameObject:

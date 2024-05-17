@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 100
-  attackDamage: 5
+  enemyAttackDamage: 0
   dodgeProbability: 0.05
   itemDropper: {fileID: 4155967132435095525}
 --- !u!1 &1143078310565772929
@@ -1461,7 +1461,11 @@ PrefabInstance:
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: f11307adf77384bddb764a05dd81b145, type: 2}
+      objectReference: {fileID: 11400000, guid: 0fde9ebed3a0fd64db417bacb4798887, type: 2}
+    - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
+      propertyPath: dropChance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
       value: ItemDropSprite (1)
@@ -1542,7 +1546,11 @@ PrefabInstance:
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 7a612af9d79a6482b81d870e2c59cbd3, type: 2}
+      objectReference: {fileID: 11400000, guid: d40a8346311246f4bac62096c80133fb, type: 2}
+    - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
+      propertyPath: dropChance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
       value: ItemDropSprite
