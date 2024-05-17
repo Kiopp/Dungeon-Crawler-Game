@@ -26,15 +26,15 @@ Unity LTS version 2022.3.22f1
 1. Download unity LTS version 2022.3.22f1, Unity download can be found [here](https://unity.com/releases/editor/qa/lts-releases)
 2. Open your command terminal of choice.
 3. Execute the following command for your respective platform, specifying your own paths:
-   #### Windows:
+   ### Windows:
    ```
    "<PathToUnityEditor>" -quit -batchmode -executeMethod Builder.BuildWindows -projectPath "<PathToProject>"
    ```
-   #### Linux:
+   ### Linux:
    ```
    "<PathToUnityEditor>" -quit -batchmode -executeMethod Builder.BuildLinux -projectPath "<PathToProject>"
    ```
-   ##### Example compilation for windows:
+   #### Example compilation for windows:
    ```
    "C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe" -quit -batchmode -executeMethod Builder.BuildWindows -projectPath "C:\Users\MyUserName\Documents\MyUnityProject"
    ```
