@@ -70,6 +70,9 @@ To generate code coverage information add the following flag to the unit testing
 ```
 - To learn more or resolve any issues with the code coverage information refer to the [Unity Code Coverage](https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.1/manual/CoverageBatchmode.html)  documentation.
 
+## Linter
+A linter will automatically run alongside our CI using Super-Linter through github actions.
+
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
 
