@@ -43,7 +43,7 @@ Unity LTS version 2022.3.22f1
 
 ## Unit tests
 ### Command line:
-To manually run unit tests with unity from the command line you can run these commands:
+To manually run unit tests with unity from the command-line you can run these commands:
 #### Run PlayMode tests:
 ```
 "<PathToUnityEditor>" -quit -batchmode -runTests -testPlatform PlayMode -projectPath "<PathToTheProject>"
@@ -62,7 +62,7 @@ To generate code coverage information add the following flag to the unit testing
 ```
 -enableCodeCoverage
 ```
-- The code coverage information is presented as an html page. The html file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
+- The code coverage information is presented as an HTML page. The HTML file will be located at `\Dungeon Crawler\CodeCoverage\Report`. 
 - The system also saves a less detailed history of all the code coverage you do as xml files at `\Dungeon Crawler\CodeCoverage\Report-history`.
 - If you also want to generate .svg and .png badges, add the following flag to the command:
 ```
