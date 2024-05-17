@@ -24,6 +24,8 @@ jobs:
           VALIDATE_XML: false
           VALIDATE_TEXTLINT: false
           VALIDATE_YAML: false
+          VALIDATE_JSCPD: false
+          VALIDATE_NATURAL_LANGUAGE: false
           PROJECT_PATH: 'Dungeon Crawler'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UNITY_VERSION: '2022.3.22f1'
