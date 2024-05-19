@@ -5,7 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    /*
+    Main function is to control the main "interaction" buttons in the ui.
+
+    Maybe show a battle log?
+
     
+
+
+    */
+
+
     // Define a delegate type for the event
     public delegate void ButtonClickedAction();
 
