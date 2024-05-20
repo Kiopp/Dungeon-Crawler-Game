@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     Maybe show a battle log?
 
-    
+    UI manager will have to communicate with the battle manager? 
 
 
     */
