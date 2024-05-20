@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d716f202e861cc0438ebb7d02fe8cbb7, type: 3}
-  m_Name: BronzeShortsword
+  m_Name: Dagger
   m_EditorClassIdentifier: 
-  id: 3
-  itemName: Bronze Shortsword
-  Value: 2
-  icon: {fileID: 1729793340, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
-  description: A bronze shortsword used by most dungeon divers.
+  id: 10
+  itemName: Dagger
+  Value: 3
+  icon: {fileID: -2097178995, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
+  description: A short but sharp dagger. It's kinda big though ngl...
   Rarity: 100
-  dmg: 5
+  dmg: 5.5

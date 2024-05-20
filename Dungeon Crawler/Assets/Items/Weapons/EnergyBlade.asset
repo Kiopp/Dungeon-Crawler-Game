@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d716f202e861cc0438ebb7d02fe8cbb7, type: 3}
+  m_Name: EnergyBlade
+  m_EditorClassIdentifier: 
+  id: 7
+  itemName: Energy Blade
+  Value: 10
+  icon: {fileID: -1809024420, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
+  description: This blade slices through everything like butter.
+  Rarity: 110
+  dmg: 6
