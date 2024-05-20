@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef73562ef3458147afb3a2cc1a46d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
-  enemyAttackDamage: 0
+  startHealth: 50
+  enemyAttackDamage: 5
   dodgeProbability: 0.05
   itemDropper: {fileID: 4155967132435095525}
 --- !u!1 &1143078310565772929
