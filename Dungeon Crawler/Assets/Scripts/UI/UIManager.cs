@@ -47,17 +47,12 @@ public class UIManager : MonoBehaviour
     void OnButtonClick(int buttonIndex)
     {
         Debug.Log("Button " + buttonIndex + " clicked.");
-        // Perform additional actions based on which button was clicked
         // If attack button is pressed perform attack action if in battle.
         if (buttonIndex == 0)
         {
             // Raise the OnAttack event if Button 0 is clicked
             OnAttack?.Invoke();
         }
-
-
-        // For example, change the text of the clicked button
-        // ChangeButtonText(buttonIndex, "Clicked!");
     }
 
     // Method to change the text of a specific button
@@ -78,5 +73,22 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogError("No Text component found on button.");
         }
+    }
+
+    // Method to be called when a fight begins
+    public void OnBattleStart() {
+        SetLogText("Enemy Encountered!");
+    }
+
+    // Method to be called when a fight ends.
+    public void OnBattleEnd() {
+        SetLogText("Battle Ended");
+    }
+
+    public Text LogText;
+
+    // Method that sets the ingame log to a message.
+    public void SetLogText (string message) {
+        LogText.text = message;        
     }
 }
