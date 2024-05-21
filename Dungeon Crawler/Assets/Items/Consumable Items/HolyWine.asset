@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1de57f786d1f4f9c3d0e5f62c867e, type: 3}
+  m_Name: HolyWine
+  m_EditorClassIdentifier: 
+  id: 8
+  itemName: Holy Wine
+  Value: 999
+  icon: {fileID: 2092120867, guid: 09f7a74f19b191142a51189e9175ccaf, type: 3}
+  description: Made from the sacred fruit of life. Said to have the ability to bring
+    back the dead.
+  Rarity: 200
+  healing: 999
