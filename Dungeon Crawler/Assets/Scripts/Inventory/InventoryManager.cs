@@ -40,6 +40,13 @@ public class InventoryManager : MonoBehaviour
 
     public void RefreshInventoryUI()
     {
+
+        if (ItemContent == null || InventoryItem == null)
+        {
+            Debug.LogError("UI components not initialized");
+            return; // Exit the method if UI components are not initialized
+        }
+
         // Clear existing UI items
         foreach (Transform child in ItemContent)
         {
@@ -60,5 +67,10 @@ public class InventoryManager : MonoBehaviour
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
         }
+    }
+
+    public bool Contains(Item item)
+    {
+        return Items.Contains(item);
     }
 }
