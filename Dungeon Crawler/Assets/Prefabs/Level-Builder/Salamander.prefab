@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 50
-  enemyAttackDamage: 5
+  enemyAttackDamage: 3
   dodgeProbability: 0.05
   itemDropper: {fileID: 4155967132435095525}
 --- !u!1 &1143078310565772929
