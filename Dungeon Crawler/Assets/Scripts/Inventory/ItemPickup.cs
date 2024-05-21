@@ -5,12 +5,8 @@ using UnityEngine.UI;
 
 public class ItemPickup : MonoBehaviour
 {
-    private Item item;
-
-    private void Start()
-    {
-        item = GetComponentInParent<ItemDrop>().GetItem(); // Get item from parent ItemDrop
-    }
+    [SerializeField]
+    private Item item; 
 
     void Pickup()
     {
@@ -22,15 +18,10 @@ public class ItemPickup : MonoBehaviour
 
         Debug.Log($"Picking up item: {item.GetName}");
         InventoryManager.Instance.Add(item);
-        Destroy(transform.parent.parent.gameObject); // Destroy the entire enemy object
+        Destroy(gameObject);
     }
 
     private void OnMouseDown()
-    {
-        Pickup();
-    }
-
-    private void OnTriggerEnter(Collider other)
     {
         Pickup();
     }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Health : MonoBehaviour {
 
     public GameObject player;
@@ -25,9 +24,7 @@ public class Health : MonoBehaviour {
     private int iCurrentHealth;
 
     void Update() {
-      
         iCurrentHealth = player.GetComponent<Player>().currentHealth/10; // Gets the current health of the player 
-      
         for(int i = 0; i < hearts.Length; i++) {
 
             // Failsafe which makes it impossible for health to go higher than the amount of available hearts.
@@ -36,21 +33,18 @@ public class Health : MonoBehaviour {
             }*/
 
             // Fills or removes health
-            if(i < iCurrentHealth) {
+            if(i < iCurrentHealth) {   
                 hearts[i].sprite = fullHeart;
             }
-            else
-            {
+            else {
                 hearts[i].sprite = emptyHeart;
             }
 
             // Sets the amount of available hearts to the decided value numberOfHearts
-            if (i < numberOfHearts)
-            {
+            if(i < numberOfHearts) {
                 hearts[i].enabled = true;
             }
-            else
-            {
+            else {
                 hearts[i].enabled = false;
             }
         }

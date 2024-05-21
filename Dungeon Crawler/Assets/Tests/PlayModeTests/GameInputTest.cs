@@ -30,9 +30,9 @@ public class GameInputTest
         yield return new WaitForSeconds(moveDelay);
         player.OnMoveRelease();
 
-        // Disable movement
+        //Disable movement
         player.DisableMovement();
-
+        
         // Gather post-test information
         var endPosition = gameObject.transform.position;
 
@@ -74,7 +74,7 @@ public class GameInputTest
         yield return new WaitForSeconds(moveDelay + 0.3f); // + 0.3f for extra delay.
         player.OnMoveRelease();
 
-        // Disable movement
+        //Disable movement
         player.DisableMovement();
 
         // Gather post-test information
@@ -119,7 +119,7 @@ public class GameInputTest
         yield return new WaitForSeconds(rotationDelay);
         player.OnRotateRelease();
 
-        // Disable movement
+        //Disable movement
         player.DisableMovement();
 
         // Gather post-test information
@@ -146,7 +146,7 @@ public class GameInputTest
         var gameObject = new GameObject();
         var player = gameObject.AddComponent<GameInput>();
         player.EnableSimulation(); // class no longer takes input from the PlayerInputActions
-        player.SetRotationValue(-1f); // simulate left rotation
+        player.SetRotationValue(-1f); // simulate right rotation
         player.PlayerObject = gameObject;
 
         // Gather pre-test information
@@ -162,7 +162,7 @@ public class GameInputTest
         yield return new WaitForSeconds(rotationDelay);
         player.OnRotateRelease();
 
-        // Disable movement
+        //Disable movement
         player.DisableMovement();
 
         // Gather post-test information

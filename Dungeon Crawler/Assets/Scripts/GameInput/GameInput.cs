@@ -44,7 +44,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Move.started += ctx => OnMoveStart();
         playerInputActions.Player.Rotate.started += ctx => OnRotateStart();
 
-        // Subscribe to canceled events, canceled is called when key is released
+        // Sybscribe to canceled events, canceled is called when key is released
         playerInputActions.Player.Move.canceled += ctx => OnMoveRelease();
         playerInputActions.Player.Rotate.canceled += ctx => OnRotateRelease();
     }
@@ -59,7 +59,7 @@ public class GameInput : MonoBehaviour
             {
                 TryMovePlayer();
             }
-            else if (keepRotating && Time.time >= nextRotateTime)
+            else if (keepRotating && Time.time >= nextRotateTime) 
             {
                 TryRotatePlayer();
             }
@@ -160,6 +160,7 @@ public class GameInput : MonoBehaviour
             // Start movement coroutine
             StartCoroutine(SmoothMove(forwardDirection * moveDistance));
         }
+        
     }
 
     private void TryRotatePlayer()
@@ -167,7 +168,7 @@ public class GameInput : MonoBehaviour
         // Get rotation input
         if (!isTest)
             rotationValue = playerInputActions.Player.Rotate.ReadValue<float>();
-
+        
         // Update timer
         nextRotateTime = Time.time + rotateDelay + 0.1f; // Extra .1 second delay for coroutine to finish
 
@@ -203,6 +204,7 @@ public class GameInput : MonoBehaviour
 
         // Alert movement stop
         isMoving = false;
+
     }
 
     // Coroutine for smooth rotations

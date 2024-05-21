@@ -27,8 +27,6 @@ public class BattleTrigger : MonoBehaviour
             playerObject.GetComponent<CameraControl>().EnableMovement(); // Enable player movement
         }
 
-        // Disable certain objects
-        transform.parent.gameObject.SetActive(false); // Disable the BattleTriggers
-        enemyObject.SetActive(false); // Disable Enemy object
+        enemyObject.transform.parent.gameObject.SetActive(false); // Remove defeated enemy
     }
 }

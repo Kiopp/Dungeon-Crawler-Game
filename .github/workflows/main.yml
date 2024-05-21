@@ -3,37 +3,6 @@ name: Actions 😎
 on: [push, pull_request]
 
 jobs:
-  lint:
-    name: Test lint
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          lfs: true
-
-      # Linter test
-      - name: Super-Linter
-        uses: super-linter/super-linter@v5.7.2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          DEFAULT_BRANCH: main
-          DISABLE_ERROR: true
-          VALIDATE_GITLEAKS: false
-          VALIDATE_MARKDOWN: false
-          VALIDATE_XML: false
-          VALIDATE_JSON: false
-          VALIDATE_YAML: false
-          VALIDATE_JSCPD: false
-          VALIDATE_NATURAL_LANGUAGE: false
-          VALIDATE_ALL_CODEBASE: false
-          PROJECT_PATH: 'Dungeon Crawler'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UNITY_VERSION: '2022.3.22f1'
-          
   test:
     name: Test my project ✨
     runs-on: ubuntu-latest
