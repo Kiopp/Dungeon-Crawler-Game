@@ -5681,7 +5681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 100
-  attackDamage: 10
+  playerAttackDamage: 0
   dodgeProbability: 0.5
 --- !u!1 &1037347608
 GameObject:
@@ -6064,6 +6064,10 @@ PrefabInstance:
     - target: {fileID: 2564175060501167658, guid: b2cde9f33abca46849fca68d365c5d5a, type: 3}
       propertyPath: m_Name
       value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128333755489970681, guid: b2cde9f33abca46849fca68d365c5d5a, type: 3}
+      propertyPath: m_Text
+      value: 'ItemName '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8762,7 +8766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399963874825864591, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7185658650311139500, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
       propertyPath: m_Name
