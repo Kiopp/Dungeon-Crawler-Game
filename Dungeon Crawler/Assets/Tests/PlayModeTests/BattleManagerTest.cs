@@ -15,40 +15,40 @@ public class BattleManagerTests
     // Simulates a mock battle entity 
     public class MockBattleEntity : IBattleEntity
     {
-        public int startingHealth { get; } // Starting health of the battle entity
-        public int Damage { get; } // Attack damage of the battle entity
-        public float Dodge { get; set; } // Dodge probability of the battle entity
-        public int currentHealth { get; private set; } // Current health of the battle entity
+        public int StartingHealth { get; } // Starting health of the battle entity
+        public int AttackDamage { get; } // Attack damage of the battle entity
+        public float DodgeProbability { get; private set; } // Dodge probability of the battle entity
+        public int CurrentHealth { get; private set; } // Current health of the battle entity
 
         // Initializes battle entity attributes
         public MockBattleEntity(int health = 100, int damage = 10)
         {
-            startingHealth = health;
-            Damage = damage;
-            Dodge = 0F;
-            currentHealth = health;
+            StartingHealth = health;
+            AttackDamage = damage;
+            DodgeProbability = 0F;
+            CurrentHealth = health;
         }
 
         // Simulates an attack by the battle entity
         public void Attack(IBattleEntity opponent)
         {
-            opponent.TakeDamage(Damage);
+            opponent.TakeDamage(AttackDamage);
         }
 
         // Simulates a battle entity taking damage
         public void TakeDamage(int damage)
         {
             // Checks if the battle entity dodges the attack
-            if (Random.Range(0F, 1F) >= Dodge)
+            if (Random.Range(0F, 1F) >= DodgeProbability)
             {
-                currentHealth -= damage;
+                CurrentHealth -= damage;
             }
         }
 
         // Checks if the battle entity is dead
         public bool Dead()
         {
-            return currentHealth <= 0;
+            return CurrentHealth <= 0;
         }
     }
 
@@ -63,7 +63,7 @@ public class BattleManagerTests
 
     // Destroy mock entities and battle manager object after each test
     [TearDown]
-    public void TearDown() 
+    public void TearDown()
     {
         GameObject.Destroy(mockPlayer as MonoBehaviour);
         GameObject.Destroy(mockEnemy as MonoBehaviour);
@@ -75,7 +75,7 @@ public class BattleManagerTests
     public void StartBattle_PlayerWins()
     {
         // Arrange: Make the enemy entity dead
-        mockEnemy.TakeDamage(mockEnemy.startingHealth);
+        mockEnemy.TakeDamage(mockEnemy.StartingHealth);
 
         // Act: Start the battle
         battleManager.StartBattle(mockPlayer, mockEnemy);
@@ -88,7 +88,7 @@ public class BattleManagerTests
     public void StartBattle_EnemyWins()
     {
         // Arrange: Make the player entity dead
-        mockPlayer.TakeDamage(mockPlayer.startingHealth);
+        mockPlayer.TakeDamage(mockPlayer.StartingHealth);
 
         // Act: Start the battle
         battleManager.StartBattle(mockPlayer, mockEnemy);
@@ -128,7 +128,7 @@ public class BattleManagerTests
         Assert.IsTrue(mockEnemy.Dead(), "Enemy should be dead");
         Assert.IsFalse(mockPlayer.Dead(), "Player should be alive");
         Assert.IsTrue(battleManager.CheckBattleResult(), "Player should win the battle");
-        Assert.AreEqual(mockEnemy.startingHealth - mockPlayer.Damage * playerAttackCounter, mockEnemy.currentHealth, "Enemy should have taken damage");
+        Assert.AreEqual(mockEnemy.StartingHealth - mockPlayer.AttackDamage * playerAttackCounter, mockEnemy.CurrentHealth, "Enemy should have taken damage");
     }
 
     [Test]
@@ -161,15 +161,15 @@ public class BattleManagerTests
         Assert.IsTrue(mockPlayer.Dead(), "Player should be dead");
         Assert.IsFalse(mockEnemy.Dead(), "Enemy should be alive");
         Assert.IsTrue(battleManager.CheckBattleResult(), "Enemy should  win the battle");
-        Assert.AreEqual(mockPlayer.startingHealth - mockEnemy.Damage * enemyAttackCounter, mockPlayer.currentHealth, "Player should have taken damage");
+        Assert.AreEqual(mockPlayer.StartingHealth - mockEnemy.AttackDamage * enemyAttackCounter, mockPlayer.CurrentHealth, "Player should have taken damage");
     }
 
     [Test]
     public void StartBattle_BothEntitiesDead()
     {
         // Arrange: make both entities dead
-        mockPlayer.TakeDamage(mockPlayer.startingHealth);
-        mockEnemy.TakeDamage(mockEnemy.startingHealth);
+        mockPlayer.TakeDamage(mockPlayer.StartingHealth);
+        mockEnemy.TakeDamage(mockEnemy.StartingHealth);
 
         // Act: Start the battle
         battleManager.StartBattle(mockPlayer, mockEnemy);

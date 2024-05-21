@@ -33,6 +33,7 @@ public class InventoryManager : MonoBehaviour
         {
             Items.RemoveAt(index);
             Destroy(ItemContent.GetChild(index).gameObject); // Destroy the UI element
+
             RefreshInventoryUI();
         }
     }
@@ -43,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         foreach (Transform child in ItemContent)
         {
             Destroy(child.gameObject);
-        }   
+        }
 
         // Re-create UI items from the Items list
         foreach (var item in Items)
