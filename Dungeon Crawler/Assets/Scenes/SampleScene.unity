@@ -6173,6 +6173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60bcb9bd43e701f45bf0a615c65f811b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 963194225}
   iHealth: 4
   numberOfHearts: 10
   hearts:
