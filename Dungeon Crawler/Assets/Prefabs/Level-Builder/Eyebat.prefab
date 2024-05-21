@@ -1883,7 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: cb50e7b6458f69c4cbfadfcd76020f0d, type: 2}
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: dropChance
-      value: 0.09
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
@@ -2053,7 +2053,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c2dc397ca7321854f818dad2f806ff21, type: 2}
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: dropChance
-      value: 0.015
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
@@ -2223,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: eba4e8ac2b2c6614aa8e352b66684464, type: 2}
     - target: {fileID: 1150882478625104077, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: dropChance
-      value: 0.015
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5187692128826150800, guid: 1143d101476b532429b7874306dd7689, type: 3}
       propertyPath: m_Name
