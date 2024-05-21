@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1de57f786d1f4f9c3d0e5f62c867e, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  id: 4
+  itemName: Carrot
+  Value: 2
+  icon: {fileID: 463694062, guid: d62a5b9808a20a9428ef77a8b926340d, type: 3}
+  description: A fresh and crisp carrot.
+  Rarity: 110
+  healing: 10
