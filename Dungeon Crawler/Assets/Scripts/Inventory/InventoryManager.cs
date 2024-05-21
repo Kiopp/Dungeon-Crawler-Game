@@ -8,12 +8,15 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     [SerializeField]
-    private List<Item> Items = new List<Item>();
+    private List<Item> items = new List<Item>();
 
     [SerializeField]
-    private Transform ItemContent;
+    private Transform itemContent;
+
     [SerializeField]
-    private GameObject InventoryItem;
+    private GameObject inventoryItem;
+
+    public List<Item> Items => items;
 
     public void Awake()
     {
@@ -22,17 +25,24 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item)
     {
-        Items.Add(item);
+        items.Add(item);
         RefreshInventoryUI();
     }
 
     public void Remove(Item item)
     {
-        int index = Items.IndexOf(item);
+        int index = items.IndexOf(item);
         if (index != -1)
         {
-            Items.RemoveAt(index);
-            Destroy(ItemContent.GetChild(index).gameObject); // Destroy the UI element
+            items.RemoveAt(index);
+            if (Application.isEditor)
+            {
+                DestroyImmediate(itemContent.GetChild(index).gameObject); // Use DestroyImmediate for editor tests
+            }
+            else
+            {
+                Destroy(itemContent.GetChild(index).gameObject);
+            }
             RefreshInventoryUI();
         }
     }
@@ -40,15 +50,15 @@ public class InventoryManager : MonoBehaviour
     public void RefreshInventoryUI()
     {
         // Clear existing UI items
-        foreach (Transform child in ItemContent)
+        foreach (Transform child in itemContent)
         {
             Destroy(child.gameObject);
         }   
 
         // Re-create UI items from the Items list
-        foreach (var item in Items)
+        foreach (var item in items)
         {
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
+            GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
@@ -60,4 +70,4 @@ public class InventoryManager : MonoBehaviour
             removeButton.onClick.AddListener(() => Remove(item));
         }
     }
-}
+}   
