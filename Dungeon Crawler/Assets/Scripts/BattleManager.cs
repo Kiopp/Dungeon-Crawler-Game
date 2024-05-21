@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using GameInputActions;
+using UnityEngine.Events;
 
 //A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class BattleManager : MonoBehaviour
     private BattleTrigger callingTrigger; // The BattleTrigger that initiated the latest battle
     private IBattleEntity Player; //The player entity in the battle
     private IBattleEntity Enemy; //The enemy entity in the battle
-
+    public UnityEvent<BattleRoundEventArgs> BattleRound;
     private PlayerInputActions playerInputActions; //Handles the players input
 
     private bool playerIsAttacking = false;
@@ -67,7 +68,8 @@ public class BattleManager : MonoBehaviour
             //Player turn
             Debug.Log("Player turn");
             yield return new WaitUntil(() => playerIsAttacking); //Checks if the attack input is triggered
-            Player.Attack(Enemy); //The player attacks the enemy
+            double playerDamageDealt = Player.Attack(Enemy); //The player attacks the enemy
+            playerIsAttacking = false; // Only attack once
 
             //Checks if the enemy is dead after the player turn
             if (CheckBattleResult())
@@ -80,9 +82,7 @@ public class BattleManager : MonoBehaviour
             //Enemy turn
             Debug.Log("Enemy turn");
 
-            yield return new WaitForSeconds(1);
-
-            Enemy.Attack(Player); //Enemy attacks player
+            double enemyDamageDealt = Enemy.Attack(Player); //Enemy attacks player
 
             //Checks if the player is dead after the enemy turn
             if (CheckBattleResult())
@@ -92,6 +92,10 @@ public class BattleManager : MonoBehaviour
                 break;
             }
 
+            // Update UI elements
+            BattleRound.Invoke(new BattleRoundEventArgs(Player.CurrentHealth, Player.StartingHealth, playerDamageDealt, Enemy.CurrentHealth, Enemy.StartingHealth, enemyDamageDealt));
+            
+            yield return new WaitForSeconds(1);
             yield return null; //Yield control back to unity until next frame
         }
     }

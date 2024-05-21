@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class InventoryManager : MonoBehaviour
     private Transform ItemContent;
     [SerializeField]
     private GameObject InventoryItem;
+    
+    public PlayerUIController playerUIController;
 
     public void Awake()
     {
@@ -47,7 +50,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Re-create UI items from the Items list
-        foreach (var item in Items)
+        foreach (Item item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
@@ -59,6 +62,26 @@ public class InventoryManager : MonoBehaviour
 
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
+
+            var button = obj.GetComponent<Button>();
+            if (button == null)
+            {
+                Debug.Log("Button reference is null");
+            }
+            button.onClick.AddListener(() => UseInventoryItem(item));
+            Debug.Log($"Added {item.GetName} to the inventory");
+        }
+    }
+
+    public void UseInventoryItem(Item item)
+    {
+        if (playerUIController == null)
+        {
+            Debug.Log("PlayerUIController reference is null");
+        }
+        else
+        {
+            playerUIController.UseItem(item);
         }
     }
 }

@@ -14,4 +14,10 @@ public class Consumable : Item
         return healing * RarityModifier();
     }
 
+    // Use an item on an entity
+    public void UseItem(Entity target)
+    {
+        target.Heal(healingAmount());
+    }
+
 }

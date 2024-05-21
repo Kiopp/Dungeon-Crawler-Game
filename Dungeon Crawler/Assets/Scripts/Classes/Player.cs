@@ -5,9 +5,10 @@ using UnityEngine;
 //Represents the player entity
 public class Player : Entity
 {
-    [SerializeField] private int startHealth; //Player starting health (Visisble and editable in unity inspector)
-    [SerializeField] private int playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
+    [SerializeField] private double startHealth; //Player starting health (Visisble and editable in unity inspector)
+    [SerializeField] private double playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
+    private Weapon currentWeapon; // Weapon used for damage calculations
 
     //Overrides the start method to initialize the player health and damage
     protected override void Start()
@@ -17,18 +18,57 @@ public class Player : Entity
         AttackDamage = playerAttackDamage; //Sets the player damage
     }
 
-    //Attacks an enemy
-    public override void Attack(IBattleEntity enemy)
+    // Equip a weapon
+    public void EquipWeapon(Weapon newWeapon)
     {
-        enemy.TakeDamage(AttackDamage); //Inflicts the player damage to an enemy
+        currentWeapon = newWeapon;
+        Debug.Log("Equipping new weapon");
+    }
+
+    //Attacks an enemy
+    public override double Attack(IBattleEntity enemy)
+    {
+        double totalDamage = playerAttackDamage;
+
+        if (currentWeapon == null)
+        {
+            if (enemy.TakeDamage(totalDamage))
+            {
+                return totalDamage;
+            }
+            return 0;
+        }
+        totalDamage += currentWeapon.dmgDealt();
+
+        //Inflicts the player damage to an enemy
+        if (enemy.TakeDamage(totalDamage))
+        {
+            return totalDamage;
+        } 
+        return 0;
     }
 
     //Inflicts damage to the player
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(double damage)
     {
         if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
         {
             CurrentHealth -= damage; //Reduces the player health by the damage dealt
+            return true;
+        }
+        return false;
+    }
+
+    // Heal the player
+    public override void Heal(double healAmount)
+    {
+        // Heal
+        CurrentHealth += healAmount;
+
+        // Prevent having more than max health
+        if (CurrentHealth > StartingHealth)
+        {
+            CurrentHealth = StartingHealth;
         }
     }
 
