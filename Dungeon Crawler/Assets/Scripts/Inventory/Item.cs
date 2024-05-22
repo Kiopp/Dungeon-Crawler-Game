@@ -26,11 +26,13 @@ public class Item : ScriptableObject
     public string GetName
     {
         get { return itemName; }
+        set { itemName = value; }
     }
 
     public Sprite GetIcon
     {
         get { return icon; }
+        set { icon = value; }
     }
 
     // Calculates the rarity modifier
