@@ -15,8 +15,6 @@ public class InventoryManager : MonoBehaviour
     private Transform ItemContent;
     [SerializeField]
     private GameObject InventoryItem;
-    
-    public PlayerUIController playerUIController;
 
     public void Awake()
     {
@@ -63,25 +61,14 @@ public class InventoryManager : MonoBehaviour
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
 
-            var button = obj.GetComponent<Button>();
-            if (button == null)
+            // Setup item prefab script
+            InventoryItemController btn = obj.GetComponent<InventoryItemController>();
+            if (btn != null)
             {
-                Debug.Log("Button reference is null");
+                btn.SetUpItem(this, item);
             }
-            button.onClick.AddListener(() => UseInventoryItem(item));
+            
             Debug.Log($"Added {item.GetName} to the inventory");
-        }
-    }
-
-    public void UseInventoryItem(Item item)
-    {
-        if (playerUIController == null)
-        {
-            Debug.Log("PlayerUIController reference is null");
-        }
-        else
-        {
-            playerUIController.UseItem(item);
         }
     }
 }
