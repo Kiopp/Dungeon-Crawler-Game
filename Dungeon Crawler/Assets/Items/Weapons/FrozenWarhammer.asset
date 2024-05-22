@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FrozenWarhammer
   m_EditorClassIdentifier: 
   id: 6
-  itemName: Frozen Warhammer
+  itemName: Frozen Hammer
   Value: 25
   icon: {fileID: -1937931930, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
   description: Your hands grow colder while weilding this...
