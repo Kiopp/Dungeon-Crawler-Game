@@ -5,8 +5,8 @@ using UnityEngine;
 //Represents the enemy entity
 public class Enemy : Entity
 {
-    [SerializeField] private int startHealth; //Enemy starting health (Visisble and editable in unity inspector)
-    [SerializeField] private int enemyAttackDamage; //Enemy damage (Visisble and editable in unity inspector)
+    [SerializeField] private double startHealth; //Enemy starting health (Visisble and editable in unity inspector)
+    [SerializeField] private double enemyAttackDamage; //Enemy damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Enemy dodge probability (Visisble and editable in unity inspector)
     [SerializeField] private ItemDropController itemDropper; //Item dropping controller (Visisble and editable in unity inspector)
 
@@ -19,18 +19,32 @@ public class Enemy : Entity
     }
 
     //Attacks the player
-    public override void Attack(IBattleEntity player)
+    public override double Attack(IBattleEntity player)
     {
-        player.TakeDamage(AttackDamage); //Inflicts the enemy damage to the player
+        double totalDamage = enemyAttackDamage;
+
+        //Inflicts the player damage to an enemy
+        if (player.TakeDamage(totalDamage))
+        {
+            return totalDamage;
+        }
+        return 0;
     }
 
     //Inflicts damage to the enemy
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(double damage)
     {
         if (Random.Range(0F, 1F) >= dodgeProbability) //Has a chance to randomly dodge an attack
         {
             CurrentHealth -= damage; //Reduces the enemy health by the damage dealt
+            return true;
         }
+        return false;
+    }
+    // Heal the enemy
+    public override void Heal(double healAmount)
+    {
+        throw new System.NotImplementedException();
     }
 
     //checks if the enemy has been killed

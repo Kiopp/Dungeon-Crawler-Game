@@ -7,13 +7,16 @@ public class BattleTrigger : MonoBehaviour
     public BattleManager battleManager;
     [SerializeField] private GameObject enemyObject;
     private GameObject playerObject;
+    private UIBattleConnection UIConnection;
 
     private void OnTriggerEnter(Collider player)
     {
         Debug.Log("The mighty battle has begun!");
         playerObject = player.gameObject; // Save playerObject
+        UIConnection = player.GetComponent<UIBattleConnection>(); // Save UI controller
+        UIConnection.checkInBattleManager(battleManager); // Connect battle manager to UI
         playerObject.GetComponent<CameraControl>().DisableMovement(); // Disable player movement
-        battleManager.BattleTriggerCheckIn(this); // Check in to BattleManager
+        battleManager.BattleTriggerCheckIn(this); // Check in trigger to BattleManager
         battleManager.StartBattle(playerObject.GetComponent<Player>(), enemyObject.GetComponent<Enemy>()); // Start Battle
     }
 
@@ -26,6 +29,7 @@ public class BattleTrigger : MonoBehaviour
         {
             playerObject.GetComponent<CameraControl>().EnableMovement(); // Enable player movement
         }
+        UIConnection?.checkOutBattleManager();
 
         // Disable certain objects
         transform.parent.gameObject.SetActive(false); // Disable the BattleTriggers

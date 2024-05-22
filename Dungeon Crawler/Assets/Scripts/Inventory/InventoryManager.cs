@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Re-create UI items from the Items list
-        foreach (var item in Items)
+        foreach (Item item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
@@ -66,6 +67,14 @@ public class InventoryManager : MonoBehaviour
 
             // Setup the button to remove the item
             removeButton.onClick.AddListener(() => Remove(item));
+
+            // Setup item prefab script
+            InventoryItemController btn = obj.GetComponent<InventoryItemController>();
+            if (btn != null)
+            {
+                btn.SetUpItem(this, item);
+            }
+            Debug.Log($"Added {item.GetName} to the inventory");
         }
     }
 

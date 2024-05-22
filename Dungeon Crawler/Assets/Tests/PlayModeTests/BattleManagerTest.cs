@@ -15,13 +15,13 @@ public class BattleManagerTests
     // Simulates a mock battle entity 
     public class MockBattleEntity : IBattleEntity
     {
-        public int StartingHealth { get; } // Starting health of the battle entity
-        public int AttackDamage { get; } // Attack damage of the battle entity
+        public double StartingHealth { get; } // Starting health of the battle entity
+        public double AttackDamage { get; } // Attack damage of the battle entity
         public float DodgeProbability { get; private set; } // Dodge probability of the battle entity
-        public int CurrentHealth { get; private set; } // Current health of the battle entity
+        public double CurrentHealth { get; private set; } // Current health of the battle entity
 
         // Initializes battle entity attributes
-        public MockBattleEntity(int health = 100, int damage = 10)
+        public MockBattleEntity(double health = 100, double damage = 10)
         {
             StartingHealth = health;
             AttackDamage = damage;
@@ -30,19 +30,22 @@ public class BattleManagerTests
         }
 
         // Simulates an attack by the battle entity
-        public void Attack(IBattleEntity opponent)
+        public double Attack(IBattleEntity opponent)
         {
             opponent.TakeDamage(AttackDamage);
+            return AttackDamage;
         }
 
         // Simulates a battle entity taking damage
-        public void TakeDamage(int damage)
+        public bool TakeDamage(double damage)
         {
             // Checks if the battle entity dodges the attack
             if (Random.Range(0F, 1F) >= DodgeProbability)
             {
                 CurrentHealth -= damage;
+                return true;
             }
+            return false;
         }
 
         // Checks if the battle entity is dead
