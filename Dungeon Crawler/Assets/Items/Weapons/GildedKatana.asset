@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GildedKatana
   m_EditorClassIdentifier: 
   id: 3
-  itemName: Gilded Katana
+  itemName: Gold Katana
   Value: 50
   icon: {fileID: 1047753064, guid: 29d27ad2e5bc57f46b917c75265b9227, type: 3}
   description: The gilded katana sword used by the elusive golden samurai.
