@@ -45,6 +45,7 @@ public class Player : Entity
         {
             return totalDamage;
         } 
+
         return 0;
     }
 

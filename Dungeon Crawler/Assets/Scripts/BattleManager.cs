@@ -94,7 +94,6 @@ public class BattleManager : MonoBehaviour
 
             // Update UI elements
             BattleRound.Invoke(new BattleRoundEventArgs(Player.CurrentHealth, Player.StartingHealth, playerDamageDealt, Enemy.CurrentHealth, Enemy.StartingHealth, enemyDamageDealt));
-            
             yield return new WaitForSeconds(1);
             yield return null; //Yield control back to unity until next frame
         }
