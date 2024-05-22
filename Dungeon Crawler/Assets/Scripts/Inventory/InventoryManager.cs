@@ -74,7 +74,6 @@ public class InventoryManager : MonoBehaviour
             {
                 btn.SetUpItem(this, item);
             }
-            
             Debug.Log($"Added {item.GetName} to the inventory");
         }
     }

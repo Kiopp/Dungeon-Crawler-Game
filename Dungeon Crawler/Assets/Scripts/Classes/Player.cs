@@ -44,7 +44,7 @@ public class Player : Entity
         if (enemy.TakeDamage(totalDamage))
         {
             return totalDamage;
-        } 
+        }
 
         return 0;
     }
