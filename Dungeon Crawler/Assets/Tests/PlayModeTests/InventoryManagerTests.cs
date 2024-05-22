@@ -75,7 +75,7 @@ public class InventoryManagerTests
     }
 
     [Test]
-    public void TestRemoveItem()    
+    public void TestRemoveItem()
     {
         var item = CreateTestItem("Test Item", null);
         inventoryManager.Add(item); // Directly add to the list for setup
