@@ -76,7 +76,7 @@ jobs:
         with:
           projectPath: 'Dungeon Crawler'
           allowDirtyBuild: true
-          targetPlatform: WebGL
+          targetPlatform: StandaloneWindows64
           unityVersion: 2022.3.22f1
 
       # Output
