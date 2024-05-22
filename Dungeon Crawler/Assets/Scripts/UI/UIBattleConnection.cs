@@ -6,7 +6,6 @@ public class UIBattleConnection : MonoBehaviour
 {
     // Written by Jesper Wentzell
     [SerializeField] private Player player;
-    [SerializeField] private InventoryManager inventoryManager;
     //[SerializeField] private UIManager UI;
     private BattleManager battleManager { get; set; }
 
