@@ -31,7 +31,8 @@ public class Health : MonoBehaviour
         {
 
             // Failsafe which makes it impossible for health to go higher than the amount of available hearts.
-            if (iCurrentHealth > numberOfHearts) {
+            if (iCurrentHealth > numberOfHearts)
+            {
                 iCurrentHealth = numberOfHearts;
             }
 
