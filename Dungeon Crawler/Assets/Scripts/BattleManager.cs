@@ -18,12 +18,6 @@ public class BattleManager : MonoBehaviour
 
     private bool playerIsAttacking = false;
 
-    void Awake()
-    {
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Enable(); //Enables player inputs
-    }
-
     /// <summary>
     /// Saves a reference to the latest BattleTrigger that starts a battle
     /// </summary>
