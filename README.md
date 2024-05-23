@@ -84,6 +84,7 @@ Dungeon Crawler Game is a 2024 Student Project. It is free software, and may be 
 - Enemy sprites from [itch.io](https://free-game-assets.itch.io/free-chaos-monsters-3232-icon-pack)
 - Item sprites from [itch.io](https://gianqui.itch.io/pixel-game-sprite-pack)
 - In game music: Infinite Universe by AudioCoffee from Free Music Archive
+- Main menu music: Piano arrangement performed by Nicol Armarfi of the song Afternoon, with added wind sounds by @Kiopp.
 
 ## Created by:
 - Kiopp, Jesper Wentzell
