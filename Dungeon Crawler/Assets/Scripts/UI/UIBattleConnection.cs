@@ -56,6 +56,7 @@ public class UIBattleConnection : MonoBehaviour
 
     public void HandleNewWeapon(string newWeapon) 
     {
+        UI.SetAttackButtonText(newWeapon);
         UI.SetLogText("Equipped new weapon: " + newWeapon);
         Debug.Log("Name of new weapon: " + newWeapon);
     }

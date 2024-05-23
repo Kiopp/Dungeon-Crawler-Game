@@ -80,6 +80,6 @@ public class UIManager : MonoBehaviour
 
     public void SetAttackButtonText(string newWeapon) 
     {
-        ChangeButtonText(0, newWeapon);
+        ChangeButtonText(0, "Attack with " + newWeapon);
     }
 }
