@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using GameInputActions;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 //A battle manager responsible for managing battles between the player and enemies
 public class BattleManager : MonoBehaviour
@@ -78,6 +79,7 @@ public class BattleManager : MonoBehaviour
             {
                 Debug.Log("Player is dead, Enemy wins!");
                 EndBattle();
+                SceneManager.LoadScene("EndScene");
                 break;
             }
 
