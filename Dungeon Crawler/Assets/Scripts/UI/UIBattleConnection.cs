@@ -21,6 +21,11 @@ public class UIBattleConnection : MonoBehaviour
         this.battleManager = null;
     }
 
+    void Start()
+    {
+        UI.OnAttack += HandleAttack;
+    }
+
     public void OnBattleStart()
     {
         UI.SetLogText("Battle Started!");
@@ -32,16 +37,22 @@ public class UIBattleConnection : MonoBehaviour
                   $"Player Damage Dealt: {e.playerDamageDealt}\n" +
                   $"Enemy Health: {e.enemyHealth}/{e.enemyMaxHealth}\n" +
                   $"Enemy Damage Dealt: {e.enemyDamageDealt}");
-        Debug.Log($"Player Health: {e.playerHealth}/{e.playerMaxHealth}, " +
-                  $"Player Damage Dealt: {e.playerDamageDealt}, " +
-                  $"Enemy Health: {e.enemyHealth}/{e.enemyMaxHealth}, " +
-                  $"Enemy Damage Dealt: {e.enemyDamageDealt}");
     }
 
     public void OnBattleEnded()
     {
-        // NOT YET IMPLEMENTED
-        // Notify the UIManager that the battle ended
-        // Need UIManager to complete
+        
+    }
+
+    public void HandleAttack() 
+    {
+        if(battleManager != null) 
+        {
+            this.battleManager.OnPlayerAttack();
+        }
+    }
+
+    void Update() {
+
     }
 }

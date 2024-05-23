@@ -12,15 +12,20 @@ public class UIManager : MonoBehaviour
     public event ButtonClickedAction OnAttack;
 
      // An array to hold references to the Button components
-    public Button[] buttons;
-
+    [SerializeField] private Button[] buttons;
     [SerializeField] private Text LogText;
+
+    // Start is called before the first frame update
     void Start()
     {
-
+        // Assign listeners to each button dynamically
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int index = i;  // Capture the index for use in the lambda
+            buttons[i].onClick.AddListener(() => OnButtonClick(index));
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -69,7 +74,12 @@ public class UIManager : MonoBehaviour
     }
 
     // Method that sets the ingame log to a message.
-    public void SetLogText (string message) {
+    public void SetLogText(string message) {
         LogText.text = message;        
+    }
+
+    public void SetAttackButtonText(string newWeapon) 
+    {
+        ChangeButtonText(0, newWeapon);
     }
 }
