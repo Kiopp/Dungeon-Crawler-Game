@@ -75,9 +75,9 @@ public class Player : Entity
         Healed?.Invoke(healAmount);
 
         // Prevent having more than max health
-        if (CurrentHealth > StartingHealth)
+        if (CurrentHealth > startHealth)
         {
-            CurrentHealth = StartingHealth;
+            CurrentHealth = startHealth;
         }
     }
 
