@@ -615,6 +615,14 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 261690822}
+    - target: {fileID: 1662322077030429727, guid: c2bedcec344ac9448a945e79605e00ef, type: 3}
+      propertyPath: dodgeProbability
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662322077030429727, guid: c2bedcec344ac9448a945e79605e00ef, type: 3}
+      propertyPath: playerAttackDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4097406269803076211, guid: c2bedcec344ac9448a945e79605e00ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

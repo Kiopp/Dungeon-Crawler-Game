@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 20
-  enemyAttackDamage: 5
-  dodgeProbability: 0.05
+  enemyAttackDamage: 10
+  dodgeProbability: 0.25
   itemDropper: {fileID: 7098900462723398742}
 --- !u!1 &703381547963666925
 GameObject:
@@ -555,6 +555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be66dca1e8efe348a7a97429adf3280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BattleRound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4510808041408114260
 GameObject:
   m_ObjectHideFlags: 0
