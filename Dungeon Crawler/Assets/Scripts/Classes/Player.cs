@@ -5,10 +5,16 @@ using UnityEngine;
 //Represents the player entity
 public class Player : Entity
 {
-    [SerializeField] private double startHealth; //Player starting health (Visisble and editable in unity inspector)
+    [SerializeField] public double startHealth; //Player starting health (Visisble and editable in unity inspector)
     [SerializeField] private double playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
     private Weapon currentWeapon; // Weapon used for damage calculations
+
+    public delegate void NewWeaponEquippedEventHandler(string newWeapon);
+    public event NewWeaponEquippedEventHandler NewWeaponEquipped;
+
+    public delegate void HealingEventHandler(double eHealingAmount);
+    public event HealingEventHandler Healed;
 
     //Overrides the start method to initialize the player health and damage
     protected override void Start()
@@ -22,6 +28,7 @@ public class Player : Entity
     public void EquipWeapon(Weapon newWeapon)
     {
         currentWeapon = newWeapon;
+        NewWeaponEquipped?.Invoke(newWeapon.name);
         Debug.Log("Equipping new weapon");
     }
 
@@ -65,6 +72,7 @@ public class Player : Entity
     {
         // Heal
         CurrentHealth += healAmount;
+        Healed?.Invoke(healAmount);
 
         // Prevent having more than max health
         if (CurrentHealth > StartingHealth)
