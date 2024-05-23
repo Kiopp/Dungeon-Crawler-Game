@@ -11,8 +11,10 @@ public class Player : Entity
     private Weapon currentWeapon; // Weapon used for damage calculations
 
     public delegate void NewWeaponEquippedEventHandler(string newWeapon);
-
     public event NewWeaponEquippedEventHandler NewWeaponEquipped;
+
+    public delegate void HealingEventHandler(double eHealingAmount);
+    public event HealingEventHandler Healed;
 
     //Overrides the start method to initialize the player health and damage
     protected override void Start()
@@ -70,6 +72,7 @@ public class Player : Entity
     {
         // Heal
         CurrentHealth += healAmount;
+        Healed?.Invoke(healAmount);
 
         // Prevent having more than max health
         if (CurrentHealth > StartingHealth)

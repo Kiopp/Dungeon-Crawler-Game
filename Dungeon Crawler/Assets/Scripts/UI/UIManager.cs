@@ -59,7 +59,8 @@ public class UIManager : MonoBehaviour
     }
 
     // Method to be called when a fight begins
-    public void OnBattleStart() {
+    public void OnBattleStart()
+    {
         SetLogText("Enemy Encountered!");
     }
 
@@ -69,11 +70,12 @@ public class UIManager : MonoBehaviour
     }
 
     // Method that sets the ingame log to a message.
-    public void SetLogText(string message) {
-        LogText.text = message;        
+    public void SetLogText(string message)
+    {
+        LogText.text = message;
     }
 
-    public void SetAttackButtonText(string newWeapon) 
+    public void SetAttackButtonText(string newWeapon)
     {
         ChangeButtonText(0, "Attack with " + newWeapon);
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIBattleConnection : MonoBehaviour
 {
-    // Written by Jesper Wentzell
+    // Written by Jesper Wentzell and Joel Majava
     [SerializeField] private Player player;
     [SerializeField] private UIManager UI;
     private BattleManager battleManager { get; set; }
@@ -26,6 +26,7 @@ public class UIBattleConnection : MonoBehaviour
     {
         UI.OnAttack += HandleAttack;
         player.NewWeaponEquipped += HandleNewWeapon;
+        player.Healed += HandleHealing;
     }
 
     public void OnBattleStart()
@@ -46,22 +47,23 @@ public class UIBattleConnection : MonoBehaviour
         UI.SetLogText("Enemy has been slain!");
     }
 
-    public void HandleAttack() 
+    public void HandleAttack()
     {
-        if(battleManager != null) 
+        if(battleManager != null)
         {
             this.battleManager.OnPlayerAttack();
         }
     }
 
-    public void HandleNewWeapon(string newWeapon) 
+    public void HandleNewWeapon(string newWeapon)
     {
         UI.SetAttackButtonText(newWeapon);
         UI.SetLogText("Equipped new weapon: " + newWeapon);
         Debug.Log("Name of new weapon: " + newWeapon);
     }
 
-    void Update() {
-        
+    public void HandleHealing(double healingAmount)
+    {
+        UI.SetLogText("You healed: " + healingAmount);
     }
 }
