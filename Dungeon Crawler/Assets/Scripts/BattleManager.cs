@@ -11,19 +11,12 @@ public class BattleManager : MonoBehaviour
     private BattleTrigger callingTrigger; // The BattleTrigger that initiated the latest battle
     private IBattleEntity Player; //The player entity in the battle
     private IBattleEntity Enemy; //The enemy entity in the battle
+    public UnityEvent BattleStart;
+    public UnityEvent BattleEnded;
     public UnityEvent<BattleRoundEventArgs> BattleRound;
     private PlayerInputActions playerInputActions; //Handles the players input
 
     private bool playerIsAttacking = false;
-
-    void Awake()
-    {
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Enable(); //Enables player inputs
-
-        playerInputActions.Player.Attack.started += ctx => OnPlayerAttack();
-        playerInputActions.Player.Attack.canceled += ctx => StopPlayerAttack();
-    }
 
     /// <summary>
     /// Saves a reference to the latest BattleTrigger that starts a battle
@@ -44,18 +37,13 @@ public class BattleManager : MonoBehaviour
         playerIsAttacking = false;
     }
 
-    //Disables the player input when the script is disabled
-    private void OnDisable()
-    {
-        playerInputActions.Disable(); //Disables player inputs
-    }
-
     //Starts the battle between a player and an enemy
     public void StartBattle(IBattleEntity player, IBattleEntity enemy)
     {
         Player = player;
         Enemy = enemy;
 
+        BattleStart?.Invoke();
         Debug.Log("The battle has begun");
         StartCoroutine(BattleLoop()); //Starts the battle loop coroutine
     }
@@ -75,6 +63,7 @@ public class BattleManager : MonoBehaviour
             if (CheckBattleResult())
             {
                 Debug.Log("Enemy is dead, Player wins!");
+                BattleEnded?.Invoke();
                 EndBattle();
                 break;
             }
@@ -93,7 +82,7 @@ public class BattleManager : MonoBehaviour
             }
 
             // Update UI elements
-            BattleRound.Invoke(new BattleRoundEventArgs(Player.CurrentHealth, Player.StartingHealth, playerDamageDealt, Enemy.CurrentHealth, Enemy.StartingHealth, enemyDamageDealt));
+            BattleRound.Invoke(new BattleRoundEventArgs(Player.CurrentHealth, ((Player)Player).startHealth, playerDamageDealt, Enemy.CurrentHealth, ((Enemy)Enemy).startHealth, enemyDamageDealt));
             yield return new WaitForSeconds(1);
             yield return null; //Yield control back to unity until next frame
         }
