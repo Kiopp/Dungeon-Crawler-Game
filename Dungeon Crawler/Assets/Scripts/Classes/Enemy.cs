@@ -5,7 +5,7 @@ using UnityEngine;
 //Represents the enemy entity
 public class Enemy : Entity
 {
-    [SerializeField] private double startHealth; //Enemy starting health (Visisble and editable in unity inspector)
+    [SerializeField] public double startHealth; //Enemy starting health (Visisble and editable in unity inspector)
     [SerializeField] private double enemyAttackDamage; //Enemy damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Enemy dodge probability (Visisble and editable in unity inspector)
     [SerializeField] private ItemDropController itemDropper; //Item dropping controller (Visisble and editable in unity inspector)

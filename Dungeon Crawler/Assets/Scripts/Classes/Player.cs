@@ -5,7 +5,7 @@ using UnityEngine;
 //Represents the player entity
 public class Player : Entity
 {
-    [SerializeField] private double startHealth; //Player starting health (Visisble and editable in unity inspector)
+    [SerializeField] public double startHealth; //Player starting health (Visisble and editable in unity inspector)
     [SerializeField] private double playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
     [SerializeField] private float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
     private Weapon currentWeapon; // Weapon used for damage calculations
