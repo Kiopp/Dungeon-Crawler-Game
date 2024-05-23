@@ -49,7 +49,7 @@ public class UIBattleConnection : MonoBehaviour
 
     public void HandleAttack()
     {
-        if(battleManager != null)
+        if (battleManager != null)
         {
             this.battleManager.OnPlayerAttack();
         }

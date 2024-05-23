@@ -65,7 +65,8 @@ public class UIManager : MonoBehaviour
     }
 
     // Method to be called when a fight ends.
-    public void OnBattleEnd() {
+    public void OnBattleEnd()
+    {
         SetLogText("Battle Ended");
     }
 
