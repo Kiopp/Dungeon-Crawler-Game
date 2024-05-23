@@ -10,6 +10,10 @@ public class Player : Entity
     [SerializeField] private float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
     private Weapon currentWeapon; // Weapon used for damage calculations
 
+    public delegate void NewWeaponEquippedEventHandler(string newWeapon);
+
+    public event NewWeaponEquippedEventHandler NewWeaponEquipped;
+
     //Overrides the start method to initialize the player health and damage
     protected override void Start()
     {
@@ -22,6 +26,7 @@ public class Player : Entity
     public void EquipWeapon(Weapon newWeapon)
     {
         currentWeapon = newWeapon;
+        NewWeaponEquipped?.Invoke(newWeapon.name);
         Debug.Log("Equipping new weapon");
     }
 

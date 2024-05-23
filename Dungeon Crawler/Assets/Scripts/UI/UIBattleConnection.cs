@@ -24,6 +24,7 @@ public class UIBattleConnection : MonoBehaviour
     void Start()
     {
         UI.OnAttack += HandleAttack;
+        player.NewWeaponEquipped += HandleNewWeapon;
     }
 
     public void OnBattleStart()
@@ -52,7 +53,12 @@ public class UIBattleConnection : MonoBehaviour
         }
     }
 
-    void Update() {
+    public void HandleNewWeapon(string newWeapon) 
+    {
+        Debug.Log("Name of new weapon: " + newWeapon);
+    }
 
+    void Update() {
+        
     }
 }

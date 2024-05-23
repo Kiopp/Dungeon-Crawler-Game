@@ -59,7 +59,7 @@ public class BattleManager : MonoBehaviour
         Player = player;
         Enemy = enemy;
 
-        BattleStart.Invoke();
+        BattleStart?.Invoke();
         Debug.Log("The battle has begun");
         StartCoroutine(BattleLoop()); //Starts the battle loop coroutine
     }
