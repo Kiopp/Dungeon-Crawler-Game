@@ -22,9 +22,6 @@ public class BattleManager : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable(); //Enables player inputs
-        
-        //playerInputActions.Player.Attack.started += ctx => OnPlayerAttack();
-        //playerInputActions.Player.Attack.canceled += ctx => StopPlayerAttack();
     }
 
     /// <summary>
