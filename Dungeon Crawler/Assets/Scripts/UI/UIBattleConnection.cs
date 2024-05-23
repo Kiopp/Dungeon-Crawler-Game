@@ -14,6 +14,7 @@ public class UIBattleConnection : MonoBehaviour
         this.battleManager = battleManager;
         this.battleManager.BattleRound.AddListener(OnBattleRound);
         this.battleManager.BattleStart.AddListener(OnBattleStart);
+        this.battleManager.BattleEnded.AddListener(OnBattleEnded);
     }
 
     public void checkOutBattleManager()
@@ -42,7 +43,7 @@ public class UIBattleConnection : MonoBehaviour
 
     public void OnBattleEnded()
     {
-        
+        UI.SetLogText("Enemy has been slain!");
     }
 
     public void HandleAttack() 
@@ -55,6 +56,7 @@ public class UIBattleConnection : MonoBehaviour
 
     public void HandleNewWeapon(string newWeapon) 
     {
+        UI.SetLogText("Equipped new weapon: " + newWeapon);
         Debug.Log("Name of new weapon: " + newWeapon);
     }
 

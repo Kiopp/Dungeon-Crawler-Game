@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     // Define an event based on that delegate
     public event ButtonClickedAction OnAttack;
 
-     // An array to hold references to the Button components
+    // An array to hold references to the Button components
     [SerializeField] private Button[] buttons;
     [SerializeField] private Text LogText;
 

@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     private IBattleEntity Player; //The player entity in the battle
     private IBattleEntity Enemy; //The enemy entity in the battle
     public UnityEvent BattleStart;
+    public UnityEvent BattleEnded;
     public UnityEvent<BattleRoundEventArgs> BattleRound;
     private PlayerInputActions playerInputActions; //Handles the players input
 
@@ -79,6 +80,7 @@ public class BattleManager : MonoBehaviour
             if (CheckBattleResult())
             {
                 Debug.Log("Enemy is dead, Player wins!");
+                BattleEnded?.Invoke();
                 EndBattle();
                 break;
             }
