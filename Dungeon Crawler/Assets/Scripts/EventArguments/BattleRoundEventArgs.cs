@@ -15,7 +15,7 @@ public class BattleRoundEventArgs
     {
         this.playerHealth = playerHealth;
         this.playerMaxHealth = playerMaxHealth;
-        this.playerMaxHealth = playerMaxHealth;
+        this.playerDamageDealt = playerDamageDealt;
         this.enemyHealth = enemyHealth;
         this.enemyMaxHealth = enemyMaxHealth;
         this.enemyDamageDealt = enemyDamageDealt;

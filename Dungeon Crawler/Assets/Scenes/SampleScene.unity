@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1836756, g: 0.2291317, b: 0.3050341, a: 1}
+  m_IndirectSpecularColor: {r: 0.18367611, g: 0.22913252, b: 0.3050355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5375,7 +5375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 963194231}
-  inventoryManager: {fileID: 1225457624}
+  UI: {fileID: 1935280482}
 --- !u!1 &1037347608
 GameObject:
   m_ObjectHideFlags: 0
@@ -5742,7 +5742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -828, y: 62.352493}
+  m_AnchoredPosition: {x: -828, y: 62.35254}
   m_SizeDelta: {x: -1676.28, y: -144.70499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093266166
@@ -6689,17 +6689,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210433413}
   m_CullTransparentMesh: 1
---- !u!114 &1225457624 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4211521054009530173, guid: 47dc4dffc3a5240d2963e158846546c5, type: 3}
-  m_PrefabInstance: {fileID: 1460496988}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c043c2c0b976b461c9a15eb44781670f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1269604428
 GameObject:
   m_ObjectHideFlags: 0
@@ -7941,7 +7930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 189, y: 47.7}
+  m_AnchoredPosition: {x: 189, y: 47.69995}
   m_SizeDelta: {x: 350, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445687338
@@ -9702,7 +9691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 545, y: 47.7}
+  m_AnchoredPosition: {x: 545, y: 47.69995}
   m_SizeDelta: {x: 350, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762572662
@@ -10536,6 +10525,7 @@ GameObject:
   - component: {fileID: 1935280479}
   - component: {fileID: 1935280481}
   - component: {fileID: 1935280480}
+  - component: {fileID: 1935280482}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -10605,6 +10595,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935280478}
   m_CullTransparentMesh: 1
+--- !u!114 &1935280482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935280478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d7fe921d9e32a47bc5855df33a124c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons: []
+  LogText: {fileID: 884858820}
 --- !u!1 &1940806581
 GameObject:
   m_ObjectHideFlags: 0

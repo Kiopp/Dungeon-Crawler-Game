@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
     private BattleTrigger callingTrigger; // The BattleTrigger that initiated the latest battle
     private IBattleEntity Player; //The player entity in the battle
     private IBattleEntity Enemy; //The enemy entity in the battle
+    public UnityEvent BattleStart;
     public UnityEvent<BattleRoundEventArgs> BattleRound;
     private PlayerInputActions playerInputActions; //Handles the players input
 
@@ -56,6 +57,7 @@ public class BattleManager : MonoBehaviour
         Player = player;
         Enemy = enemy;
 
+        BattleStart.Invoke();
         Debug.Log("The battle has begun");
         StartCoroutine(BattleLoop()); //Starts the battle loop coroutine
     }
