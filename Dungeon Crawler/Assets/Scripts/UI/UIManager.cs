@@ -26,11 +26,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     // Method to handle button clicks
     void OnButtonClick(int buttonIndex)
     {
