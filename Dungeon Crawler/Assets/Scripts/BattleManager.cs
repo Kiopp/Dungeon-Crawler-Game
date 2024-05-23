@@ -37,12 +37,6 @@ public class BattleManager : MonoBehaviour
         playerIsAttacking = false;
     }
 
-    //Disables the player input when the script is disabled
-    private void OnDisable()
-    {
-        playerInputActions.Disable(); //Disables player inputs
-    }
-
     //Starts the battle between a player and an enemy
     public void StartBattle(IBattleEntity player, IBattleEntity enemy)
     {
