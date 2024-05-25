@@ -76,9 +76,6 @@ A linter will automatically run alongside our CI using Super-Linter through gith
 ## Kanban board
 https://github.com/users/Kiopp/projects/2
 
-## Licence
-Dungeon Crawler Game is a 2024 Student Project. It is free software, and may be redistributed under the terms of the [Unity License version 4.x](https://unity.com/legal/eula)
-
 ## Assets used
 - Dungeon walls, floor, ceiling and decoration meshes/textures made by [Gridness Studio](https://assetstore.unity.com/packages/3d/environments/dungeons/lite-dungeon-pack-low-poly-3d-art-by-gridness-242692)
 - Enemy sprites from [itch.io](https://free-game-assets.itch.io/free-chaos-monsters-3232-icon-pack)
