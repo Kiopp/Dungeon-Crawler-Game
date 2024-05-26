@@ -16,6 +16,7 @@ public class ItemDropTests
         dropItem = testObject.AddComponent<ItemDrop>();
     }
 
+    // Tests if the parent object is set active when item is dropped.
     [Test]
     public void Drop_EnabledParentObject()
     {
