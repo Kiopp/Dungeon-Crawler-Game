@@ -32,4 +32,10 @@ public class ItemDropController : MonoBehaviour
             }
         }
     }
+
+    // Used for testing
+    public void SetLootTable(List<ItemDrop> table)
+    {
+        lootTable = table;
+    }
 }
