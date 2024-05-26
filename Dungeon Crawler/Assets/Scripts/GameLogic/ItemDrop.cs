@@ -19,7 +19,6 @@ public class ItemDrop : MonoBehaviour
         {
             spriteRenderer.sprite = item.GetIcon;
         }
-        
     }
 
     /// <summary>
