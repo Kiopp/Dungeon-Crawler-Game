@@ -60,8 +60,7 @@ public class PlayerTests
     {
         // Arrange
         MockBattleEntity enemy = new MockBattleEntity();
-
-
+        player.UnEquipWeapon();
         // Act
         double damageDealt = player.Attack(enemy);
 
@@ -84,7 +83,7 @@ public class PlayerTests
         Assert.AreEqual(35, damageDealt); // 10 base damage + 25 weapon damage
     }
 
-    // Simulates a mock battle entity 
+    // Simulates a mock player
     public class MockPlayer : Player
     {
         public void MockStart()
@@ -93,6 +92,11 @@ public class PlayerTests
             playerAttackDamage = 10;
             dodgeProbability = 0F;
             CurrentHealth = startHealth / 2;
+        }
+
+        public void UnEquipWeapon()
+        {
+            currentWeapon = null;
         }
     }
 
