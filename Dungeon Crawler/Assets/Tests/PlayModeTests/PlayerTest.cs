@@ -151,9 +151,9 @@ public class PlayerTests
             CurrentHealth += healAmount;
 
             // Prevent having more than max health
-            if (CurrentHealth > startHealth)
+            if (CurrentHealth > StartingHealth)
             {
-                CurrentHealth = startHealth;
+                CurrentHealth = StartingHealth;
             }
         }
 
