@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 [TestFixture]
 public class BattleTriggerTests
 {
-    private GameObject triggerObject; 
+    private GameObject triggerObject;
     private BattleTrigger battleTrigger;
     private GameObject playerObject;
     private GameObject enemyObject;
