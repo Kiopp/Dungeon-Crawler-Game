@@ -6,9 +6,9 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField] public double startHealth; //Player starting health (Visisble and editable in unity inspector)
-    [SerializeField] private double playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
-    [SerializeField] private float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
-    private Weapon currentWeapon; // Weapon used for damage calculations
+    [SerializeField] protected double playerAttackDamage; //Player damage (Visisble and editable in unity inspector)
+    [SerializeField] protected float dodgeProbability; //Player dodge probability (Visisble and editable in unity inspector)
+    protected Weapon currentWeapon; // Weapon used for damage calculations
 
     public delegate void NewWeaponEquippedEventHandler(string newWeapon);
     public event NewWeaponEquippedEventHandler NewWeaponEquipped;

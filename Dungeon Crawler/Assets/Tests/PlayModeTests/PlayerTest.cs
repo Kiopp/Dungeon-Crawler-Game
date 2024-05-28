@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 public class PlayerTests
 {
     private MockPlayer player;
-    private MockWeapon weapon;
+    private Weapon weapon;
 
     [SetUp]
     public void Setup()
@@ -18,10 +18,11 @@ public class PlayerTests
         player = playerObject.AddComponent<MockPlayer>();
 
         weapon = ScriptableObject.CreateInstance<MockWeapon>();
+        ((MockWeapon)weapon).MockStart();
 
         player.EquipWeapon(weapon);
 
-        player.Start();
+        player.MockStart();
     }
 
     [Test]
@@ -45,7 +46,7 @@ public class PlayerTests
         // Arrange
         double healAmount = 1000;
 
-        double maxHealth = player.StartingHealth;
+        double maxHealth = player.startHealth;
 
         // Act
         player.Heal(healAmount);
@@ -80,95 +81,29 @@ public class PlayerTests
         double damageDealt = player.Attack(enemy);
 
         // Assert
-        Assert.AreEqual(35, damageDealt); // 10 base damage + 15 weapon damage
+        Assert.AreEqual(35, damageDealt); // 10 base damage + 25 weapon damage
     }
 
     // Simulates a mock battle entity 
     public class MockPlayer : Player
     {
-        public double StartingHealth { get; set; } // Starting health of the battle entity
-        public double AttackDamage { get; set; } // Attack damage of the battle entity
-        public float DodgeProbability { get; set; } // Dodge probability of the battle entity
-        public double CurrentHealth { get; set; } // Current health of the battle entity
-        private Weapon currentWeapon;
-
-        public void Start()
+        public void MockStart()
         {
-            StartingHealth = 100;
-            AttackDamage = 10;
-            DodgeProbability = 0F;
-            CurrentHealth = 50;
-        }
-
-
-        // Equip a weapon
-        public void EquipWeapon(Weapon newWeapon)
-        {
-            currentWeapon = newWeapon;
-            Debug.Log("Equipping new weapon");
-        }
-
-        //Attacks an enemy
-        public override double Attack(IBattleEntity enemy)
-        {
-            double totalDamage = AttackDamage;
-
-            if (currentWeapon == null)
-            {
-                if (enemy.TakeDamage(totalDamage))
-                {
-                    return totalDamage;
-                }
-                return 0;
-            }
-            totalDamage += currentWeapon.dmgDealt();
-
-            //Inflicts the player damage to an enemy
-            if (enemy.TakeDamage(totalDamage))
-            {
-                return totalDamage;
-            }
-
-            return 0;
-        }
-
-        // Simulates a battle entity taking damage
-        public bool TakeDamage(double damage)
-        {
-            // Checks if the battle entity dodges the attack
-            if (Random.Range(0F, 1F) >= DodgeProbability)
-            {
-                CurrentHealth -= damage;
-                return true;
-            }
-            return false;
-        }
-
-        // Heal the player
-        public override void Heal(double healAmount)
-        {
-            // Heal
-            CurrentHealth += healAmount;
-
-            // Prevent having more than max health
-            if (CurrentHealth > StartingHealth)
-            {
-                CurrentHealth = StartingHealth;
-            }
-        }
-
-        // Checks if the battle entity is dead
-        public bool Dead()
-        {
-            return CurrentHealth <= 0;
+            startHealth = 100;
+            playerAttackDamage = 10;
+            dodgeProbability = 0F;
+            CurrentHealth = startHealth / 2;
         }
     }
 
     public class MockWeapon : Weapon
     {
-        private double dmg = 25;
+        public void MockStart()
+        {
+            dmg = 25;
+        }
 
-        public new double dmgDealt()
+        public override double dmgDealt()
         {
             return dmg;
         }
