@@ -12,12 +12,12 @@ public class CameraControl : MonoBehaviour
 
     }
 
-    public void DisableMovement()
+    public virtual void DisableMovement()
     {
         gameInput.DisableMovement();
     }
 
-    public void EnableMovement()
+    public virtual void EnableMovement()
     {
         gameInput.EnableMovement();
     }

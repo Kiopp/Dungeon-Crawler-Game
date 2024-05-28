@@ -1,52 +1,94 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Reflection;
+using UnityEngine.EventSystems;
 
 [TestFixture]
 public class BattleTriggerTests
 {
+    private GameObject triggerObject; 
     private BattleTrigger battleTrigger;
     private GameObject playerObject;
     private GameObject enemyObject;
     private Collider playerCollider;
-    private UIBattleConnection uiBattleConnection;
-    private GameInputMock gameInputMock;
-    private BattleManager battleManager;
-    private CameraControl cameraControl;
+    private MockUIBattleConnection uiBattleConnection;
+    private MockBattleManager mockBattleManager;
+    private MockCameraControl cameraControl;
 
-    // Define a mock class for GameInput
-    private class GameInputMock : GameInput
+    private class MockCameraControl : CameraControl
     {
-        public void EnableMovement() { }
-        public void DisableMovement() { }
+        public new void Awake() { }
+
+        public override void DisableMovement()
+        {
+            movementEnabled = false;
+        }
+
+        public override void EnableMovement()
+        {
+            movementEnabled = true;
+        }
+
+        public bool movementEnabled = true;
+    }
+
+    private class MockUIBattleConnection : UIBattleConnection
+    {
+        public bool checkedInUI = false;
+        public bool checkedOutUI = false;
+
+        public void MockStart(BattleManager battleManager)
+        {
+            this.battleManager = battleManager;
+        }
+
+        public override void checkInBattleManager(BattleManager battleManager)
+        {
+            checkedInUI = true;
+        }
+
+        public override void checkOutBattleManager()
+        {
+            checkedOutUI = true;
+        }
+    }
+
+    private class MockBattleManager : BattleManager
+    {
+        public override void StartBattle(IBattleEntity player, IBattleEntity enemy)
+        {
+            Debug.Log("The battle has begun");
+        }
     }
 
     [SetUp]
     public void SetUp()
     {
         // Create GameObjects
-        battleTrigger = new GameObject().AddComponent<BattleTrigger>();
+        triggerObject = new GameObject();
+        battleTrigger = triggerObject.AddComponent<BattleTrigger>();
         playerObject = new GameObject();
         enemyObject = new GameObject();
 
         // Add necessary components
-        uiBattleConnection = playerObject.AddComponent<UIBattleConnection>();
-        cameraControl = playerObject.AddComponent<CameraControl>();
+        uiBattleConnection = playerObject.AddComponent<MockUIBattleConnection>();
+        cameraControl = playerObject.AddComponent<MockCameraControl>();
+
+        playerObject.AddComponent<Player>();
+        enemyObject.AddComponent<Enemy>();
 
         // Add a BoxCollider to playerObject
+        playerObject.AddComponent<Rigidbody>();
         playerCollider = playerObject.AddComponent<BoxCollider>();
+        playerCollider.isTrigger = true;
 
         // Add a BattleManager to battleTrigger
-        battleTrigger.battleManager = new GameObject().AddComponent<BattleManager>();
+        battleTrigger.battleManager = new GameObject().AddComponent<MockBattleManager>();
 
-        // Set up GameInputMock and assign it to cameraControl
-        gameInputMock = new GameObject().AddComponent<GameInputMock>();
-        FieldInfo field = typeof(CameraControl).GetField("gameInput", BindingFlags.NonPublic | BindingFlags.Instance);
-        field.SetValue(cameraControl, gameInputMock);
-
-        // Invoke Awake method of BattleTrigger
-        MethodInfo awakeMethod = typeof(BattleTrigger).GetMethod("Awake", BindingFlags.NonPublic | BindingFlags.Instance);
-        awakeMethod.Invoke(battleTrigger, null);
+        uiBattleConnection.MockStart(mockBattleManager);
+        battleTrigger.enemyObject = enemyObject;
+        GameObject triggerParent = new GameObject();
+        triggerObject.transform.SetParent(triggerParent.transform);
     }
 
 
@@ -68,7 +110,8 @@ public class BattleTriggerTests
         // Assert
         Assert.IsTrue(battleTrigger.GetBattleIsOn(), "Battle should be on after trigger is entered.");
         Assert.IsNotNull(battleTrigger.battleManager, "Battle manager should be assigned.");
-        // Add more assertions as needed
+        Assert.IsTrue(uiBattleConnection.checkedInUI);
+        Assert.IsFalse(cameraControl.movementEnabled);
     }
 
     [Test]
@@ -82,7 +125,7 @@ public class BattleTriggerTests
 
         // Assert
         Assert.IsFalse(battleTrigger.GetBattleIsOn(), "Battle should be off after it has ended.");
-        Assert.IsNull(battleTrigger.battleManager, "Battle manager should be null after ending the battle.");
-        // Add more assertions as needed
+        Assert.IsTrue(uiBattleConnection.checkedOutUI);
+        Assert.IsTrue(cameraControl.movementEnabled);
     }
 }

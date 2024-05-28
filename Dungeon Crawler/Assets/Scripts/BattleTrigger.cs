@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleTrigger : MonoBehaviour
 {
     public BattleManager battleManager;
-    [SerializeField] private GameObject enemyObject;
+    [SerializeField] public GameObject enemyObject;
     private GameObject playerObject;
     private UIBattleConnection UIConnection;
     private bool battleIsOn = false;
