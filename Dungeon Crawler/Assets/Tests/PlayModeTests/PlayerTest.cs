@@ -7,7 +7,7 @@ using UnityEngine.TestTools;
 [TestFixture]
 public class PlayerTests
 {
-    private Player player;
+    private MockPlayer player;
     private MockWeapon weapon;
 
     [SetUp]
@@ -20,6 +20,8 @@ public class PlayerTests
         weapon = ScriptableObject.CreateInstance<MockWeapon>();
 
         player.EquipWeapon(weapon);
+
+        player.Start();
     }
 
     [Test]
@@ -84,11 +86,20 @@ public class PlayerTests
     // Simulates a mock battle entity 
     public class MockPlayer : Player
     {
-        public double StartingHealth { get; } // Starting health of the battle entity
-        public double AttackDamage { get; } // Attack damage of the battle entity
-        public float DodgeProbability { get; private set; } // Dodge probability of the battle entity
-        public double CurrentHealth { get; private set; } // Current health of the battle entity
+        public double StartingHealth { get; set; } // Starting health of the battle entity
+        public double AttackDamage { get; set; } // Attack damage of the battle entity
+        public float DodgeProbability { get; set; } // Dodge probability of the battle entity
+        public double CurrentHealth { get; set; } // Current health of the battle entity
         private Weapon currentWeapon;
+
+        public void Start()
+        {
+            StartingHealth = 100;
+            AttackDamage = 10;
+            DodgeProbability = 0F;
+            CurrentHealth = 50;
+        }
+
 
         // Equip a weapon
         public void EquipWeapon(Weapon newWeapon)
@@ -97,11 +108,28 @@ public class PlayerTests
             Debug.Log("Equipping new weapon");
         }
 
-        // Simulates an attack by the battle entity
-        public double Attack(IBattleEntity opponent)
+        //Attacks an enemy
+        public override double Attack(IBattleEntity enemy)
         {
-            opponent.TakeDamage(AttackDamage);
-            return AttackDamage;
+            double totalDamage = AttackDamage;
+
+            if (currentWeapon == null)
+            {
+                if (enemy.TakeDamage(totalDamage))
+                {
+                    return totalDamage;
+                }
+                return 0;
+            }
+            totalDamage += currentWeapon.dmgDealt();
+
+            //Inflicts the player damage to an enemy
+            if (enemy.TakeDamage(totalDamage))
+            {
+                return totalDamage;
+            }
+
+            return 0;
         }
 
         // Simulates a battle entity taking damage
