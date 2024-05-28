@@ -7,9 +7,9 @@ public class UIBattleConnection : MonoBehaviour
     // Written by Jesper Wentzell and Joel Majava
     [SerializeField] private Player player;
     [SerializeField] private UIManager UI;
-    private BattleManager battleManager { get; set; }
+    protected BattleManager battleManager { get; set; }
 
-    public void checkInBattleManager(BattleManager battleManager)
+    public virtual void checkInBattleManager(BattleManager battleManager)
     {
         this.battleManager = battleManager;
         this.battleManager.BattleRound.AddListener(OnBattleRound);
@@ -17,7 +17,7 @@ public class UIBattleConnection : MonoBehaviour
         this.battleManager.BattleEnded.AddListener(OnBattleEnded);
     }
 
-    public void checkOutBattleManager()
+    public virtual void checkOutBattleManager()
     {
         this.battleManager = null;
     }

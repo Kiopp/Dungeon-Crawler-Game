@@ -39,7 +39,7 @@ public class BattleManager : MonoBehaviour
     }
 
     //Starts the battle between a player and an enemy
-    public void StartBattle(IBattleEntity player, IBattleEntity enemy)
+    public virtual void StartBattle(IBattleEntity player, IBattleEntity enemy)
     {
         Player = player;
         Enemy = enemy;
