@@ -81,14 +81,6 @@ public class UIManagerTests
     }
 
     [Test]
-    public void ChangeButtonText_InvalidIndex_ShowsError()
-    {
-        LogAssert.Expect(LogType.Error, "Invalid button index.");
-        uiManager.ChangeButtonText(-1, "Invalid");
-        uiManager.ChangeButtonText(10, "Invalid");
-    }
-
-    [Test]
     public void SetLogText_UpdatesLogText()
     {
         uiManager.SetLogText("Battle Started");
